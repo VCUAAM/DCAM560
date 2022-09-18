@@ -1,0 +1,107 @@
+{
+    "DepthSensor": {
+        "BG_threshold_range(read_only)": [
+            0,
+            100
+        ],
+        "Regular_config": {
+            "BG_threshold": 20,
+            "depth_range": 0,
+            "gmm_gain": 256,
+            "pulse_count": -1
+        },
+        "WDR_config": {
+            "WDR_Number": 2,
+            "WDR_Number_Range(read_only)": [
+                2,
+                3
+            ],
+            "WDR_Ratio": [
+                1,
+                1,
+                1
+            ],
+            "WDR_frame_No.0": {
+                "BG_threshold": 20,
+                "depth_range": 0,
+                "gmm_gain": 256,
+                "pulse_count": -1
+            },
+            "WDR_frame_No.1": {
+                "BG_threshold": 20,
+                "depth_range": 1,
+                "gmm_gain": 256,
+                "pulse_count": -1
+            },
+            "WDR_frame_No.2": {
+                "BG_threshold": 20,
+                "depth_range": 2,
+                "gmm_gain": 256,
+                "pulse_count": -1
+            }
+        },
+        "depth_range_list(read_only)": [
+            0,
+            1,
+            2,
+            5
+        ],
+        "enabled": true,
+        "gmm_gain_range(read_only)": [
+            0,
+            4095
+        ],
+        "pulse_count_range(read_only)": [
+            0,
+            600
+        ],
+        "random_pattern": true
+    },
+    "Network": {
+        "DHCP": false,
+        "ip_addr": "192.168.1.103",
+        "subnetmask": "255.255.255.0"
+    },
+    "RGBSensor": {
+        "brightness_default": 0,
+        "brightness_range(read_only)": [
+            -64,
+            64
+        ],
+        "enabled": true,
+        "exposure_time_default": 5,
+        "exposure_time_range(read_only)": [
+            1,
+            30
+        ],
+        "resolution_default": "640_480",
+        "resolution_list(read_only)": [
+            "1600_1200",
+            "800_600",
+            "640_480"
+        ]
+    },
+    "WorkMode": "master",
+    "WorkMode_list(read_only)": [
+        "master",
+        "slave"
+    ],
+    "config_version": "1.0.0",
+    "datamode_default": "Depth_And_RGB",
+    "datamode_list(read_only)": [
+        "Depth_And_RGB",
+        "IR_And_RGB",
+        "Depth_And_IR_And_RGB",
+        "WDR_Depth"
+    ],
+    "device_name": "",
+    "frame_rate": 30,
+    "frame_rate_list(read_only)": [
+        30,
+        15,
+        10,
+        6,
+        5
+    ],
+    "sync_enabled": true
+}
