@@ -1,8 +1,8 @@
 from pickle import FALSE, TRUE
 import sys
-sys.path.append('../../../')
+sys.path.append('src/')
 
-from DCAM560.API.Vzense_api_560 import *
+from API.Vzense_api_560 import *
 import time
 
 camera = VzenseTofCam()
@@ -14,7 +14,7 @@ while camera_count==0 and retry_count > 0:
     retry_count = retry_count-1
     camera_count = camera.Ps2_GetDeviceCount()
     time.sleep(1)
-    print("scaning......   ",retry_count)
+    print("scanning......   ",retry_count)
 
 device_info=PsDeviceInfo()
 
@@ -35,11 +35,11 @@ elif camera_count == 1:
         print(' failed:' + ret)   
         exit() 
 else: 
-    print("there are no camera found")
+    print("No camera found")
     exit()
 
 if  PsConnectStatus.Connected.value != device_info.status:
-	print("connect statu:",device_info.status)  
+	print("connection status:",device_info.status)  
 	print("Call Ps2_OpenDevice with connect status :",PsConnectStatus.Connected.value)
 	exit()
 else:
@@ -49,25 +49,28 @@ else:
 
 ret = camera.Ps2_OpenDevice(device_info.uri)
 if  ret == 0:
-    print("open device successful")
+    print("Device open successfuly")
 else:
     print('Ps2_OpenDevice failed: ' + str(ret))   
+# get SN 
 
-ret = camera.Ps2_StartStream()
+ret, sn = camera.Ps2_GetSerialNumber()
 if  ret == 0:
-    print("start stream successful")
+    print("Ps2_GetSerialNumber :",str(sn))
 else:
-    print("Ps2_StartStream failed:",ret)     
+    print("Ps2_GetSerialNumber failed:",ret)
 
-ret = camera.Ps2_StopStream()       
+# get FW
+ret, fw = camera.Ps2_GetFirmwareVersionNumber()
 if  ret == 0:
-    print("stop stream successful")
+    print("Ps2_GetFirmwareVersionNumber :",str(fw))
 else:
-    print('Ps2_StopStream failed: ' + str(ret))  
+    print("Ps2_GetFirmwareVersionNumber failed:",ret)
 
-ret = camera.Ps2_CloseDevice()     
+ 
+ret = camera.Ps2_CloseDevice()
 if  ret == 0:
-    print("close device successful")
+    print("Device closed successfuly")
 else:
     print('Ps2_CloseDevice failed: ' + str(ret))   
            
