@@ -1,6 +1,7 @@
 from API.Vzense_define_560 import * 
 import sys, os
 import ctypes
+from time import sleep
 from ctypes import *
 gCallbackFuncList=[]
 
@@ -10,7 +11,7 @@ class VzenseTofCam():
     def __init__(self):
         if platform.system() == 'Linux':
             libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep))+"/Lib/libvzense_api.so"
-            print(libpath)
+            #print(libpath)
             self.ps_cam_lib = cdll.LoadLibrary(libpath)
         elif platform.system() == 'Windows':          
             lib_name = "../../Lib/"
@@ -19,7 +20,7 @@ class VzenseTofCam():
             os.environ['path']+= lib_path
             
             libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep))+"/Lib/vzense_api.dll"
-            print(libpath)
+            #print(libpath)
             self.ps_cam_lib = cdll.LoadLibrary(libpath)    
         else:
             print('Unsupported OS')
@@ -31,6 +32,48 @@ class VzenseTofCam():
 
     def __del__(self):
         self.ps_cam_lib.Ps2_Shutdown()
+
+    def connect(self):
+        camera_count,retry_count = 0,0
+
+        while camera_count == 0 and retry_count < 20:
+            retry_count += 1
+            camera_count = self.Ps2_GetDeviceCount()
+            sleep(1)
+            print("Searching for camera, attempt",retry_count)
+
+        device_info = PsDeviceInfo()
+
+        if camera_count > 1:
+            ret,device_infolist = self.Ps2_GetDeviceListInfo(camera_count)
+            if ret == 0:
+                device_info = device_infolist[0]
+                for info in device_infolist: 
+                    print('cam uri:  ' + str(info.uri))
+            else:
+                print(' failed:' + ret)  
+                exit()  
+        elif camera_count == 1:
+            ret,device_info = self.Ps2_GetDeviceInfo()
+            if ret ==  0:
+                #print('cam uri:' + str(device_info.uri))
+                sleep(.01)
+            else:
+                print('failed:' + ret)   
+                exit() 
+        else: 
+            print("No camera found")
+            exit()
+
+        if PsConnectStatus.Connected.value != device_info.status:
+            print("connection status:",device_info.status)  
+            print("Call Ps2_OpenDevice with connect status :",PsConnectStatus.Connected.value)
+            exit()
+        #else:
+            #print("uri: "+str(device_info.uri))
+            #print("alias: "+str(device_info.alias))
+            #print("connectStatus: "+str(device_info.status))   
+        return device_info
     
     def Ps2_GetDeviceCount(self):
         count = c_int()
@@ -46,14 +89,24 @@ class VzenseTofCam():
         device_info = PsDeviceInfo()
         return self.ps_cam_lib.Ps2_GetDeviceInfo(byref(device_info), cam_index), device_info
          
-    def Ps2_OpenDevice(self,  uri=c_char_p()):
+    def open(self,  uri=c_char_p()):
         if uri:
-            return self.ps_cam_lib.Ps2_OpenDevice(uri, byref(self.device_handle))
+            ret = self.ps_cam_lib.Ps2_OpenDevice(uri, byref(self.device_handle))
+            if  ret == 0:
+                print("Camera opened successfully")
+                return None
+            else:
+                print('open failed: ' + str(ret))
         else:
             return PsReturnStatus.PsRetInputPointerIsNull
     
-    def Ps2_CloseDevice(self):
-        return self.ps_cam_lib.Ps2_CloseDevice(byref(self.device_handle))
+    def close(self):
+        ret = self.ps_cam_lib.Ps2_CloseDevice(byref(self.device_handle))
+        if  ret == 0:
+            print("Device closed successfully")
+        else:
+            print('close failed: ' + str(ret))   
+        return None
 
     def Ps2_StartStream(self):
         return self.ps_cam_lib.Ps2_StartStream(self.device_handle, self.session)
@@ -237,15 +290,25 @@ class VzenseTofCam():
         wdrpulseCount = PsWDRPulseCount()
         return self.ps_cam_lib.Ps2_GetWDRPulseCount(self.device_handle, self.session, byref(wdrpulseCount)),wdrpulseCount
 
-    def Ps2_GetSerialNumber(self): 
+    def serial_number(self): 
         tmp = c_char * 64
         sn = tmp()
-        return self.ps_cam_lib.Ps2_GetSerialNumber(self.device_handle, self.session, sn, 63),sn.value
+        ret = self.ps_cam_lib.Ps2_GetSerialNumber(self.device_handle, self.session, sn, 63)
+        if  ret == 0:
+            print("Device Serial Number:",str(sn.value))
+        else:
+            print("serial_number failed:",ret)
+        return None
 
-    def Ps2_GetFirmwareVersionNumber(self): 
+    def firmware_version(self): 
         tmp = c_char * 64
         fw = tmp()
-        return self.ps_cam_lib.Ps2_GetFirmwareVersionNumber(self.device_handle, self.session, fw, 63),fw.value
+        ret = self.ps_cam_lib.Ps2_GetFirmwareVersionNumber(self.device_handle, self.session, fw, 63)
+        if  ret == 0:
+            print("Firmware Version:",str(fw.value))
+        else:
+            print("firmware_version failed:",ret)
+        return 
 
     def Ps2_SetDSPEnabled(self, enabled = c_bool(True)): 
         return self.ps_cam_lib.Ps2_SetDSPEnabled(self.device_handle, self.session, enabled)
