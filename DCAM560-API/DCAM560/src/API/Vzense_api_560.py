@@ -1,5 +1,5 @@
 from API.Vzense_define_560 import * 
-import sys, os
+from os import path,getcwd,environ
 import ctypes
 from time import sleep
 from ctypes import *
@@ -10,16 +10,15 @@ class VzenseTofCam():
     session = c_uint(0)
     def __init__(self):
         if platform.system() == 'Linux':
-            libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep))+"/Lib/libvzense_api.so"
+            libpath = (path.abspath(path.dirname(getcwd()) + path.sep))+"/Lib/libvzense_api.so"
             #print(libpath)
             self.ps_cam_lib = cdll.LoadLibrary(libpath)
         elif platform.system() == 'Windows':          
             lib_name = "../../Lib/"
-            lib_path = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + lib_name
-            lib_path = ';'+lib_path
-            os.environ['path']+= lib_path
-            
-            libpath = (os.path.abspath(os.path.dirname(os.getcwd()) + os.path.sep))+"/Lib/vzense_api.dll"
+            lib_path = path.dirname(path.abspath(__file__)) + path.sep + lib_name
+            lib_path = ';' + lib_path
+            environ['path'] += lib_path
+            libpath = (path.abspath(path.dirname(getcwd()) + path.sep))+"/Lib/vzense_api.dll"
             #print(libpath)
             self.ps_cam_lib = cdll.LoadLibrary(libpath)    
         else:
@@ -33,6 +32,11 @@ class VzenseTofCam():
     def __del__(self):
         self.ps_cam_lib.Ps2_Shutdown()
 
+    sensors = {
+        "depth": PsSensorType.PsDepthSensor,
+        "RGB": PsSensorType.PsRgbSensor
+    }
+
     def connect(self):
         camera_count,retry_count = 0,0
 
@@ -45,28 +49,28 @@ class VzenseTofCam():
         device_info = PsDeviceInfo()
 
         if camera_count > 1:
-            ret,device_infolist = self.Ps2_GetDeviceListInfo(camera_count)
-            if ret == 0:
+            status,device_infolist = self.Ps2_GetDeviceListInfo(camera_count)
+            if status == 0:
                 device_info = device_infolist[0]
                 for info in device_infolist: 
                     print('cam uri:  ' + str(info.uri))
             else:
-                print(' failed:' + ret)  
+                print('Connection failed:' + status)  
                 exit()  
         elif camera_count == 1:
-            ret,device_info = self.Ps2_GetDeviceInfo()
-            if ret ==  0:
+            status,device_info = self.Ps2_GetDeviceInfo()
+            if status ==  0:
                 #print('cam uri:' + str(device_info.uri))
                 sleep(.01)
             else:
-                print('failed:' + ret)   
+                print('Connection failed:' + status)   
                 exit() 
         else: 
             print("No camera found")
             exit()
 
         if PsConnectStatus.Connected.value != device_info.status:
-            print("connection status:",device_info.status)  
+            print("Connection status:",device_info.status)  
             print("Call Ps2_OpenDevice with connect status :",PsConnectStatus.Connected.value)
             exit()
         #else:
@@ -91,64 +95,86 @@ class VzenseTofCam():
          
     def open(self,  uri=c_char_p()):
         if uri:
-            ret = self.ps_cam_lib.Ps2_OpenDevice(uri, byref(self.device_handle))
-            if  ret == 0:
+            status = self.ps_cam_lib.Ps2_OpenDevice(uri, byref(self.device_handle))
+            if  status == 0:
                 print("Camera opened successfully")
                 return None
             else:
-                print('open failed: ' + str(ret))
+                print('Open failed: ' + str(status))
         else:
             return PsReturnStatus.PsRetInputPointerIsNull
     
     def close(self):
-        ret = self.ps_cam_lib.Ps2_CloseDevice(byref(self.device_handle))
-        if  ret == 0:
+        status = self.ps_cam_lib.Ps2_CloseDevice(byref(self.device_handle))
+        if  status == 0:
             print("Device closed successfully")
         else:
-            print('close failed: ' + str(ret))   
+            print('Close failed: ' + str(status))   
         return None
 
-    def Ps2_StartStream(self):
-        return self.ps_cam_lib.Ps2_StartStream(self.device_handle, self.session)
+    def start_stream(self):
+        status = self.ps_cam_lib.Ps2_StartStream(self.device_handle, self.session)
+        if status == 0:
+            print("Stream started successfully")
+        else:
+            print("Start stream failed:",status)     
+        return None
          
-    def Ps2_StopStream(self):
-        return self.ps_cam_lib.Ps2_StopStream(self.device_handle, self.session)
+    def stop_stream(self):
+        status = self.ps_cam_lib.Ps2_StopStream(self.device_handle, self.session)
+        if status == 0:
+            print("Stream stopped successfully")
+        else:
+            print('Stop stream failed: ' + str(status)) 
+        return None
          
     def Ps2_ReadNextFrame(self):
         frameready = PsFrameReady()
         return self.ps_cam_lib.Ps2_ReadNextFrame(self.device_handle, self.session, byref(frameready)), frameready
 
-    def Ps2_GetFrame(self,  frametype = PsFrameType.PsDepthFrame):   
+    def Ps2_GetFrame(self, frametype = PsFrameType.PsDepthFrame):   
         psframe = PsFrame() 
         return self.ps_cam_lib.Ps2_GetFrame(self.device_handle, self.session, frametype.value, byref(psframe)), psframe
     
-    def Ps2_SetDataMode(self,  datamode = PsDataMode.PsDepthAndRGB_30):
+    def Ps2_SetDataMode(self, datamode = PsDataMode.PsDepthAndRGB_30):
         return self.ps_cam_lib.Ps2_SetDataMode(self.device_handle, self.session, datamode.value)
          
     def Ps2_GetDataMode(self):
         datamode = c_int(0)
         return self.ps_cam_lib.Ps2_GetDataMode(self.device_handle, self.session, byref(datamode)), datamode
     
-    def Ps2_SetDepthRange(self,  depthrange = PsDepthRange.PsNearRange):
+    def Ps2_SetDepthRange(self, depthrange = PsDepthRange.PsNearRange):
         return self.ps_cam_lib.Ps2_SetDepthRange(self.device_handle, self.session, depthrange.value) 
        
     def Ps2_GetDepthRange(self):
         depthrange = c_int(0)
         return self.ps_cam_lib.Ps2_GetDepthRange(self.device_handle, self.session, byref(depthrange)), depthrange
 
-    def Ps2_SetThreshold(self,  threshold = c_uint16(20)):
+    def Ps2_SetThreshold(self, threshold = c_uint16(20)):
         return self.ps_cam_lib.Ps2_SetThreshold(self.device_handle, self.session, threshold) 
                
-    def Ps2_GetThreshold(self):
+    def get_threshold(self):
         thres = c_uint16()
-        return self.ps_cam_lib.Ps2_GetThreshold(self.device_handle, self.session, byref(thres)), thres.value
+        status = self.ps_cam_lib.Ps2_GetThreshold(self.device_handle, self.session, byref(thres)) 
+        if status == 0:
+            print("Threshold:",thres.value)
+            return thres.value
+        else:
+            print("Get threshold failed:",status)
+        return None
 
-    def Ps2_SetPulseCount(self,  pulsecount = c_uint16(20)):
+    def Ps2_SetPulseCount(self, pulsecount = c_uint16(20)):
         return self.ps_cam_lib.Ps2_SetPulseCount(self.device_handle, self.session, pulsecount) 
      
-    def Ps2_GetPulseCount(self):
+    def get_pulse_count(self):
         pulsecount = c_uint16()
-        return self.ps_cam_lib.Ps2_GetPulseCount(self.device_handle, self.session, byref(pulsecount)), pulsecount.value
+        status = self.ps_cam_lib.Ps2_GetPulseCount(self.device_handle, self.session, byref(pulsecount))
+        if status == 0:
+            print("Pulse count:",pulsecount.value)
+            return pulsecount.value
+        else:
+            print("Get pulse count failed:",status)
+        return None
     
     def Ps2_SetGMMGain(self, gmmgain = c_uint16(20)):
         gmmgain_ = PsGMMGain()
@@ -156,17 +182,35 @@ class VzenseTofCam():
         gmmgain_.option = 0
         return self.ps_cam_lib.Ps2_SetGMMGain(self.device_handle, self.session, gmmgain_) 
      
-    def Ps2_GetGMMGain(self):
+    def get_GMM_gain(self):
         gmmgain = c_uint16(1)
-        return self.ps_cam_lib.Ps2_GetGMMGain(self.device_handle, self.session, byref(gmmgain)), gmmgain
+        status = self.ps_cam_lib.Ps2_GetGMMGain(self.device_handle, self.session, byref(gmmgain))
+        if status == 0:
+            print("GMM Gain:",gmmgain)
+            return gmmgain
+        else:
+            print("Get GMM gain failed:",status)
+        return None
 
-    def Ps2_GetCameraParameters(self, sensorType = PsSensorType.PsDepthSensor):
+    def get_camera_parameters(self, sensorType = "depth"):
         CameraParameters = PsCameraParameters()
-        return self.ps_cam_lib.Ps2_GetCameraParameters(self.device_handle, self.session, sensorType.value, byref(CameraParameters)), CameraParameters
+        sensorTypeObj = self.sensors[sensorType]
+        status = self.ps_cam_lib.Ps2_GetCameraParameters(self.device_handle, self.session, sensorTypeObj.value, byref(CameraParameters))
 
-    def Ps2_GetCameraExtrinsicParameters(self):
+        if status == 0:
+            return CameraParameters
+        else:
+            print("Get %s camera parameters failed:",status %(sensorType))
+        return None
+
+    def get_camera_extrinsic_parameters(self):
         CameraExtrinsicParameters = PsCameraExtrinsicParameters()
-        return self.ps_cam_lib.Ps2_GetCameraExtrinsicParameters(self.device_handle, self.session, byref(CameraExtrinsicParameters)), CameraExtrinsicParameters
+        status = self.ps_cam_lib.Ps2_GetCameraExtrinsicParameters(self.device_handle, self.session, byref(CameraExtrinsicParameters))
+        if status == 0: 
+            return CameraExtrinsicParameters
+        else:
+            print("Get extrinsic parameters failed:",status)
+        return None
            
     def Ps2_SetColorPixelFormat(self, pixelFormat = PsPixelFormat.PsPixelFormatBGR888):
         return self.ps_cam_lib.Ps2_SetColorPixelFormat(self.device_handle, self.session, pixelFormat.value) 
@@ -327,12 +371,20 @@ class VzenseTofCam():
         rate = c_uint8(30)
         return self.ps_cam_lib.Ps2_GetTofFrameRate(self.device_handle, self.session, byref(rate)),rate
 
-    def Ps2_SetStandByEnabled(self, enabled = c_bool(True)): 
-        return self.ps_cam_lib.Ps2_SetStandByEnabled(self.device_handle, self.session, enabled)
+    def set_standby(self, enabled = c_bool(True)): 
+        state = self.ps_cam_lib.Ps2_SetStandByEnabled(self.device_handle, self.session, enabled)
+        if  state != 0:  
+            print("Set standby failed:",state)
+        return None
     
-    def Ps2_OpenDeviceByAlias(self,  alias=c_char_p()):
+    def open_by_alias(self,  alias=c_char_p()):
         if alias:
-            return self.ps_cam_lib.Ps2_OpenDeviceByAlias(alias, byref(self.device_handle))
+            state = self.ps_cam_lib.Ps2_OpenDeviceByAlias(alias, byref(self.device_handle))
+            if state == 0:
+                print("Device opened successfully")
+            else:
+                print('Open by alias failed: ' + str(state))  
+            return None
         else:
             return PsReturnStatus.PsRetInputPointerIsNull
     
@@ -412,22 +464,13 @@ class VzenseTofCam():
         wdrconfidencethreshold = PsWDRConfidenceThreshold()
         return self.ps_cam_lib.Ps2_GetConfidenceFilterThreshold(self.device_handle, self.session, byref(wdrconfidencethreshold)), wdrconfidencethreshold
 
-    def Ps2_OpenDeviceByIP(self,  ip=c_char_p()):
+    def open_by_ip(self, ip=c_char_p()):
         if ip:
-            return self.ps_cam_lib.Ps2_OpenDeviceByIP(ip, byref(self.device_handle))
+            state = self.ps_cam_lib.Ps2_OpenDeviceByIP(ip, byref(self.device_handle))
+            if state == 0:
+                print("Device opened successfully")
+            else:
+                print('Open by IP failed: ' + str(state)) 
+            return None
         else:
-            return PsReturnStatus.PsRetInputPointerIsNull, 0
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+            return PsReturnStatus.PsRetInputPointerIsNull
