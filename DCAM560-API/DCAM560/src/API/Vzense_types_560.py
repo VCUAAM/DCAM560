@@ -1,6 +1,4 @@
-import os, platform, numpy
 from ctypes import *
-from enum import Enum
  
 class PsRGB888Pixel(Structure):
     _pack_ = 1

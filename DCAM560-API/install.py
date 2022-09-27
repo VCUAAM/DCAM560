@@ -1,14 +1,4 @@
-import sys
-import subprocess
-import os
-import re
-import shutil
-
-# check modules
-import numpy
-import cv2
-import ctypes
- 
+import sys,os,re,shutil,subprocess
 
 system_config = "Windows64"
 url_config = "https://githubcom"

@@ -59,7 +59,7 @@
     },
     "Network": {
         "DHCP": true,
-        "ip_addr": "192.168.1.101",
+        "ip_addr": "192.168.1.102",
         "subnetmask": "255.255.255.0"
     },
     "RGBSensor": {
