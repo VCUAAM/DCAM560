@@ -180,3 +180,110 @@
 (2022-09-26 17:39:04.162 Mon) Debug: File:(f:\picozenseutool\depthperceptionsystem\imagewidget.cpp) Line:(1758) ImageWidget first frame show   51
 (2022-09-26 17:39:09.452 Mon) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(207) Control_Single::shutdownDCAM Ps2_StopStream  -3
 (2022-09-26 17:39:09.452 Mon) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(213) Control_Single::shutdownDCAM Ps2_CloseDevice -3
+(2022-09-27 16:46:59.912 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\depthperceptionsystem.cpp) Line:(62) init ui 0
+(2022-09-27 16:46:59.913 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\depthperceptionsystem.cpp) Line:(69) init ui 1
+(2022-09-27 16:46:59.932 Tue) Warning: File:() Line:(0) QMetaObject::connectSlotsByName: No matching signal for on_pushButton_save_done()
+(2022-09-27 16:46:59.942 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\depthperceptionsystem.cpp) Line:(101) init ui OK
+(2022-09-27 16:47:00.105 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(459) f:\picozenseutool\depthperceptionsystem\devicelist.cpp DCAM560CPRO:VD56CPCJC4010002P      0
+(2022-09-27 16:47:00.105 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(460) f:\picozenseutool\depthperceptionsystem\devicelist.cpp VD56CPCJC4010002P      0
+(2022-09-27 16:47:04.510 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(392) START
+(2022-09-27 16:47:04.973 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(188) Control_Single::initializeDCAM Ps2_SetColorPixelFormat  0
+(2022-09-27 16:47:05.769 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(1116) false
+(2022-09-27 16:47:05.769 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(904) false
+(2022-09-27 16:47:05.833 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(890) false
+(2022-09-27 16:47:05.893 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(883) true
+(2022-09-27 16:47:05.954 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(940) true
+(2022-09-27 16:47:06.000 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(947) false
+(2022-09-27 16:47:06.001 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(919) false
+(2022-09-27 16:47:06.001 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(926) false
+(2022-09-27 16:47:06.001 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(933) false
+(2022-09-27 16:47:06.251 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(912) true
+(2022-09-27 16:47:06.324 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(315) 20
+(2022-09-27 16:47:06.492 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(863) false
+(2022-09-27 16:47:06.538 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(875) 0
+(2022-09-27 16:47:06.540 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(427) START DONE
+(2022-09-27 16:47:06.751 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\workthread.cpp) Line:(287) MyThread first frame   55
+(2022-09-27 16:47:06.968 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\imagewidget.cpp) Line:(1758) ImageWidget first frame show   55
+(2022-09-27 16:47:12.886 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(459) f:\picozenseutool\depthperceptionsystem\devicelist.cpp DCAM560CPRO:VD56CPCJC4010002P      1
+(2022-09-27 16:47:12.887 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(460) f:\picozenseutool\depthperceptionsystem\devicelist.cpp VD56CPCJC4010002P      1
+(2022-09-27 16:47:14.210 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(207) Control_Single::shutdownDCAM Ps2_StopStream  -3
+(2022-09-27 16:47:21.983 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(207) Control_Single::shutdownDCAM Ps2_StopStream  -3
+(2022-09-27 16:47:21.984 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(213) Control_Single::shutdownDCAM Ps2_CloseDevice -3
+(2022-09-27 16:47:38.680 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\depthperceptionsystem.cpp) Line:(62) init ui 0
+(2022-09-27 16:47:38.681 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\depthperceptionsystem.cpp) Line:(69) init ui 1
+(2022-09-27 16:47:38.698 Tue) Warning: File:() Line:(0) QMetaObject::connectSlotsByName: No matching signal for on_pushButton_save_done()
+(2022-09-27 16:47:38.709 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\depthperceptionsystem.cpp) Line:(101) init ui OK
+(2022-09-27 16:48:20.793 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\depthperceptionsystem.cpp) Line:(62) init ui 0
+(2022-09-27 16:48:20.794 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\depthperceptionsystem.cpp) Line:(69) init ui 1
+(2022-09-27 16:48:20.810 Tue) Warning: File:() Line:(0) QMetaObject::connectSlotsByName: No matching signal for on_pushButton_save_done()
+(2022-09-27 16:48:20.821 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\depthperceptionsystem.cpp) Line:(101) init ui OK
+(2022-09-27 16:48:21.583 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(459) f:\picozenseutool\depthperceptionsystem\devicelist.cpp DCAM560CPRO:VD56CPCJC4010002P      0
+(2022-09-27 16:48:21.583 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(460) f:\picozenseutool\depthperceptionsystem\devicelist.cpp VD56CPCJC4010002P      0
+(2022-09-27 16:48:24.765 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(392) START
+(2022-09-27 16:48:25.207 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(188) Control_Single::initializeDCAM Ps2_SetColorPixelFormat  0
+(2022-09-27 16:48:26.017 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(1116) false
+(2022-09-27 16:48:26.017 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(904) false
+(2022-09-27 16:48:26.090 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(890) false
+(2022-09-27 16:48:26.155 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(883) true
+(2022-09-27 16:48:26.218 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(940) true
+(2022-09-27 16:48:26.282 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(947) false
+(2022-09-27 16:48:26.282 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(919) false
+(2022-09-27 16:48:26.282 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(926) false
+(2022-09-27 16:48:26.283 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(933) false
+(2022-09-27 16:48:26.461 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(912) true
+(2022-09-27 16:48:26.584 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(315) 20
+(2022-09-27 16:48:26.767 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(863) false
+(2022-09-27 16:48:26.828 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(875) 0
+(2022-09-27 16:48:26.830 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(427) START DONE
+(2022-09-27 16:48:27.013 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\workthread.cpp) Line:(287) MyThread first frame   54
+(2022-09-27 16:48:27.137 Tue) Debug: File:(f:\picozenseutool\depthperceptionsystem\imagewidget.cpp) Line:(1758) ImageWidget first frame show   54
+(2022-09-28 17:37:11.427 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\depthperceptionsystem.cpp) Line:(62) init ui 0
+(2022-09-28 17:37:11.429 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\depthperceptionsystem.cpp) Line:(69) init ui 1
+(2022-09-28 17:37:11.445 Wed) Warning: File:() Line:(0) QMetaObject::connectSlotsByName: No matching signal for on_pushButton_save_done()
+(2022-09-28 17:37:11.455 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\depthperceptionsystem.cpp) Line:(101) init ui OK
+(2022-09-28 17:37:26.521 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(459) f:\picozenseutool\depthperceptionsystem\devicelist.cpp DCAM560CPRO:VD56CPCJC4010002P      0
+(2022-09-28 17:37:26.521 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(460) f:\picozenseutool\depthperceptionsystem\devicelist.cpp VD56CPCJC4010002P      0
+(2022-09-28 17:37:28.262 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(392) START
+(2022-09-28 17:37:33.289 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(169) Control_Single::initializeDCAM Ps2_OpenDevice  -15
+(2022-09-28 17:37:33.289 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(413) initializeDCAM error:  -15
+(2022-09-28 17:37:33.290 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(459) f:\picozenseutool\depthperceptionsystem\devicelist.cpp DCAM560CPRO:VD56CPCJC4010002P      0
+(2022-09-28 17:37:33.291 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(460) f:\picozenseutool\depthperceptionsystem\devicelist.cpp VD56CPCJC4010002P      0
+(2022-09-28 17:37:34.682 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(207) Control_Single::shutdownDCAM Ps2_StopStream  -3
+(2022-09-28 17:37:34.682 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(213) Control_Single::shutdownDCAM Ps2_CloseDevice -3
+(2022-09-28 17:37:38.872 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(392) START
+(2022-09-28 17:37:39.284 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(188) Control_Single::initializeDCAM Ps2_SetColorPixelFormat  0
+(2022-09-28 17:37:40.004 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(1116) false
+(2022-09-28 17:37:40.004 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(904) false
+(2022-09-28 17:37:40.070 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(890) false
+(2022-09-28 17:37:40.130 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(883) true
+(2022-09-28 17:37:40.192 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(940) true
+(2022-09-28 17:37:40.311 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(947) false
+(2022-09-28 17:37:40.312 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(919) false
+(2022-09-28 17:37:40.312 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(926) false
+(2022-09-28 17:37:40.313 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(933) false
+(2022-09-28 17:37:40.494 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(912) true
+(2022-09-28 17:37:40.559 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(315) 20
+(2022-09-28 17:37:40.741 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(863) false
+(2022-09-28 17:37:40.802 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(875) 0
+(2022-09-28 17:37:40.804 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(427) START DONE
+(2022-09-28 17:37:40.990 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\workthread.cpp) Line:(287) MyThread first frame   50
+(2022-09-28 17:37:41.172 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\imagewidget.cpp) Line:(1758) ImageWidget first frame show   50
+(2022-09-28 17:40:31.859 Wed) Warning: File:() Line:(0) QOpenGLShader: Unable to open file "/ColorRamp/color_ramp.frag"
+(2022-09-28 17:41:08.058 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(875) 0
+(2022-09-28 17:41:08.966 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(315) 20
+(2022-09-28 17:41:09.058 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(875) 0
+(2022-09-28 17:41:09.936 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(875) 0
+(2022-09-28 17:41:10.769 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(315) 20
+(2022-09-28 17:41:10.875 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(875) 0
+(2022-09-28 17:41:15.536 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(875) 0
+(2022-09-28 17:41:16.044 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(315) 20
+(2022-09-28 17:41:16.137 Wed) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(875) 0
+(2022-09-29 10:34:57.554 Thu) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(459) f:\picozenseutool\depthperceptionsystem\devicelist.cpp DCAM560CPRO:VD56CPCJC4010002P      1
+(2022-09-29 10:34:57.555 Thu) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(460) f:\picozenseutool\depthperceptionsystem\devicelist.cpp VD56CPCJC4010002P      1
+(2022-09-29 10:34:58.168 Thu) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(459) f:\picozenseutool\depthperceptionsystem\devicelist.cpp DCAM560CPRO:VD56CPCJC4010002P      0
+(2022-09-29 10:34:58.168 Thu) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(460) f:\picozenseutool\depthperceptionsystem\devicelist.cpp VD56CPCJC4010002P      0
+(2022-09-29 10:34:58.874 Thu) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(207) Control_Single::shutdownDCAM Ps2_StopStream  -3
+(2022-09-29 10:34:59.293 Thu) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(459) f:\picozenseutool\depthperceptionsystem\devicelist.cpp DCAM560CPRO:VD56CPCJC4010002P      0
+(2022-09-29 10:34:59.293 Thu) Debug: File:(f:\picozenseutool\depthperceptionsystem\devicelist.cpp) Line:(460) f:\picozenseutool\depthperceptionsystem\devicelist.cpp VD56CPCJC4010002P      0
+(2022-09-29 10:37:14.208 Thu) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(207) Control_Single::shutdownDCAM Ps2_StopStream  -3
+(2022-09-29 10:37:14.209 Thu) Debug: File:(f:\picozenseutool\depthperceptionsystem\global\control_single.cpp) Line:(213) Control_Single::shutdownDCAM Ps2_CloseDevice -3

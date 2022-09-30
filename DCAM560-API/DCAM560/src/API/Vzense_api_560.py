@@ -159,7 +159,9 @@ class VzenseTofCam():
 
         if status != 0:  
             print("Failed to set datamode:",status)
-         
+        else:
+            print("Set data mode to %s" %(mode))
+        
     def get_data_mode(self):
         datamode = c_int(0)
         status = self.ps_cam_lib.Ps2_GetDataMode(self.device_handle, self.session, byref(datamode))
@@ -195,6 +197,8 @@ class VzenseTofCam():
         status = self.ps_cam_lib.Ps2_SetDepthRange(self.device_handle, self.session, depthrange.value)
         if status != 0:  
             print("Failed to set depth range:", status)
+        else:
+            print("Set depth range to %s" %(range))
        
     def get_depth_range(self):
         depthrange = c_int(0)
@@ -206,7 +210,9 @@ class VzenseTofCam():
         return depthrange
 
     def set_threshold(self, threshold = c_uint16(20)):
-        return self.ps_cam_lib.Ps2_SetThreshold(self.device_handle, self.session, threshold) 
+        status = self.ps_cam_lib.Ps2_SetThreshold(self.device_handle, self.session, threshold)
+        if status != 0:  
+            print("Failed to set threshold:",status)
                
     def get_threshold(self):
         thres = c_uint16()
@@ -274,10 +280,31 @@ class VzenseTofCam():
 
         return CameraExtrinsicParameters
            
-    def Ps2_SetColorPixelFormat(self, pixelFormat = PsPixelFormat.PsPixelFormatBGR888):
-        return self.ps_cam_lib.Ps2_SetColorPixelFormat(self.device_handle, self.session, pixelFormat.value) 
+    def set_color_pixel_format(self, format = "BGR888"):
+        match format:
+            case "BGR888":
+                    pixelFormat = PsPixelFormat.PsPixelFormatBGR888
+            case "RGB888":
+                    pixelFormat = PsPixelFormat.PsPixelFormatRGB888
+            case "MM16":
+                    pixelFormat = PsPixelFormat.PsPixelFormatDepthMM16
+            case "Gray16":
+                    pixelFormat = PsPixelFormat.PsPixelFormatGray16
+            case "Gray8":
+                    pixelFormat = PsPixelFormat.PsPixelFormatGray8
+            case other:
+                print("%s is not an acceptable pixel format" %(format))
+                quit()
+        status = self.ps_cam_lib.Ps2_SetColorPixelFormat(self.device_handle, self.session, pixelFormat.value) 
+        if status == 0: 
+            print("Set pixel format to %s:" %(format))
+        else:
+            print("Failed to set pixel color format:",status)
        
     def set_RGB_resolution(self, reso = "640x480"):
+        print(reso)
+        if reso == "800x600":
+            print("yes")
         match reso:
             case "640x480":
                 resolution = PsResolution.PsRGB_Resolution_640_480
@@ -292,6 +319,8 @@ class VzenseTofCam():
         if status != 0:  
             print("Failed to set RGB resolution:",status)
             quit()
+        else:
+            print("Set RGB resolution to %s:" %(reso),status)
      
     def get_RGB_resolution(self):
         resolution = c_int(0)
@@ -323,18 +352,43 @@ class VzenseTofCam():
         if status != 0:
             print("Failed to set WDR style:",status) 
                 
-    def Ps2_GetMeasuringRange(self,  range = PsDepthRange.PsNearRange):
+    def get_measuring_range(self, depthrange = "Near"):
         MeasuringRange = PsMeasuringRange()
-        rst = self.ps_cam_lib.Ps2_GetMeasuringRange(self.device_handle, self.session, range.value, byref(MeasuringRange))
-        if rst == 0:
+        #if depthrange == "Near":
+            #print("yes")
+        match depthrange:
+            case "Near": 
+                range = PsDepthRange.PsNearRange
+            case "XNear":
+                range = PsDepthRange.PsXNearRange
+            case "XXNear":
+                range = PsDepthRange.PsXXNearRange
+            case "Mid":
+                range = PsDepthRange.PsMidRange
+            case "XMid":
+                range = PsDepthRange.PsXMidRange
+            case "XXMid":
+                range = PsDepthRange.PsXXMidRange
+            case "Far":
+                range = PsDepthRange.PsFarRange
+            case "XFar":
+                range = PsDepthRange.PsXFarRange
+            case "XXFar":
+                range = PsDepthRange.PsXXFarRange
+            case other:
+                print("%s is not an acceptable depth range" %(depthrange))
+                quit()
+        status = self.ps_cam_lib.Ps2_GetMeasuringRange(self.device_handle, self.session, range.value, byref(MeasuringRange))
+        if status == 0:
             if range == PsDepthRange.PsNearRange or range == PsDepthRange.PsXNearRange or range == PsDepthRange.PsXXNearRange:
-                return rst, MeasuringRange.depthMaxNear, MeasuringRange.effectDepthMinNear, MeasuringRange.effectDepthMaxNear
+                return MeasuringRange.depthMaxNear, MeasuringRange.effectDepthMinNear, MeasuringRange.effectDepthMaxNear
             elif range == PsDepthRange.PsMidRange or range == PsDepthRange.PsXMidRange or range == PsDepthRange.PsXXMidRange:
-                return rst, MeasuringRange.depthMaxMid, MeasuringRange.effectDepthMinMid, MeasuringRange.effectDepthMaxMid
+                return MeasuringRange.depthMaxMid, MeasuringRange.effectDepthMinMid, MeasuringRange.effectDepthMaxMid
             elif range == PsDepthRange.PsFarRange or range == PsDepthRange.PsXFarRange or range == PsDepthRange.PsXXFarRange:
-                return rst, MeasuringRange.depthMaxFar, MeasuringRange.effectDepthMinFar, MeasuringRange.effectDepthMaxFar
+                return MeasuringRange.depthMaxFar, MeasuringRange.effectDepthMinFar, MeasuringRange.effectDepthMaxFar
         else:
-            return rst, 0, 0, 0
+            print("Failed to get measuring range:",status)
+            return 0, 0, 0
 
     def convert_to_world_vector(self, depthFrame = PsFrame()): 
         len = depthFrame.width*depthFrame.height
@@ -346,19 +400,35 @@ class VzenseTofCam():
             return None    
         return pointlist
 
-    def Ps2_SetSynchronizeEnabled(self, enabled = c_bool(True)): 
-        return self.ps_cam_lib.Ps2_SetSynchronizeEnabled(self.device_handle, self.session, enabled)
+    def set_synchronize(self, enabled = c_bool(True)): 
+        status = self.ps_cam_lib.Ps2_SetSynchronizeEnabled(self.device_handle, self.session, enabled)
+        if status == 0:
+            self.get_synchronize()
+        else:
+            print("Failed to set synchronization status",status)
     
-    def Ps2_GetSynchronizeEnabled(self): 
+    def get_synchronize(self): 
         enabled = c_bool(True)
-        return self.ps_cam_lib.Ps2_GetSynchronizeEnabled(self.device_handle, self.session, byref(enabled)),enabled
+        status = self.ps_cam_lib.Ps2_GetSynchronizeEnabled(self.device_handle, self.session, byref(enabled))
+        if status == 0:
+            print("Synchronization status:",enabled)
+        else:
+            print("Failed to get synchronization status",status)
     
-    def Ps2_SetDepthDistortionCorrectionEnabled(self, enabled = c_bool(True)): 
-        return self.ps_cam_lib.Ps2_SetDepthDistortionCorrectionEnabled(self.device_handle, self.session, enabled)
+    def set_depth_distortion_correction(self, enabled = c_bool(True)): 
+        status = self.ps_cam_lib.Ps2_SetDepthDistortionCorrectionEnabled(self.device_handle, self.session, enabled)
+        if status == 0:
+            self.get_depth_distortion_correction()
+        else:
+            print("Failed to set depth distortion correction",status)
     
-    def Ps2_GetDepthDistortionCorrectionEnabled(self): 
+    def get_depth_distortion_correction(self): 
         enabled = c_bool(True)
-        return self.ps_cam_lib.Ps2_GetDepthDistortionCorrectionEnabled(self.device_handle, self.session, byref(enabled)),enabled
+        status = self.ps_cam_lib.Ps2_GetDepthDistortionCorrectionEnabled(self.device_handle, self.session, byref(enabled))
+        if status == 0:
+            print("Depth distortion correction status:",enabled)
+        else:
+            print("Failed to get depth distortion correction status",status)
     
     def Ps2_SetRGBDistortionCorrectionEnabled(self, enabled = c_bool(True)): 
         return self.ps_cam_lib.Ps2_SetRGBDistortionCorrectionEnabled(self.device_handle, self.session, enabled)
@@ -374,20 +444,6 @@ class VzenseTofCam():
         enabled = c_bool(True)
         return self.ps_cam_lib.Ps2_GetComputeRealDepthCorrectionEnabled(self.device_handle, self.session, byref(enabled)),enabled
 
-    def Ps2_SetSpatialFilterEnabled(self, enabled = c_bool(True)): 
-        return self.ps_cam_lib.Ps2_SetSpatialFilterEnabled(self.device_handle, self.session, enabled)
-    
-    def Ps2_GetSpatialFilterEnabled(self): 
-        enabled = c_bool(True)
-        return self.ps_cam_lib.Ps2_GetSpatialFilterEnabled(self.device_handle, self.session, byref(enabled)),enabled
-
-    def Ps2_SetTimeFilterEnabled(self, enabled = c_bool(True)): 
-        return self.ps_cam_lib.Ps2_SetTimeFilterEnabled(self.device_handle, self.session, enabled)
-    
-    def Ps2_GetTimeFilterEnabled(self): 
-        enabled = c_bool(True)
-        return self.ps_cam_lib.Ps2_GetTimeFilterEnabled(self.device_handle, self.session, byref(enabled)),enabled
-
     def Ps2_SetDepthFrameEnabled(self, enabled = c_bool(True)): 
         return self.ps_cam_lib.Ps2_SetDepthFrameEnabled(self.device_handle, self.session, enabled)
 
@@ -400,9 +456,11 @@ class VzenseTofCam():
     def Ps2_SetImageMirror(self, type = c_int32(0)): 
         return self.ps_cam_lib.Ps2_SetImageMirror(self.device_handle, self.session, type)
     
-    def Ps2_SetImageRotation(self, type = c_int32(0)): 
-        return self.ps_cam_lib.Ps2_SetImageRotation(self.device_handle, self.session, type)
-    
+    def set_image_rotation(self, type = c_int32(0)): 
+        status = self.ps_cam_lib.Ps2_SetImageRotation(self.device_handle, self.session, type)
+        if status != 0:
+            print("Failed to set image rotation",status)
+
     def set_mapper(self, mode = "Depth", en = True):
         match en:
             case True:
@@ -425,13 +483,21 @@ class VzenseTofCam():
         else:
             print("Failed to set mapper to %s:" %(mode),status)
    
-    def Ps2_GetMapperEnabledDepthToRGB(self): 
+    def get_mapper(self): 
         enabled = c_bool(True)
-        return self.ps_cam_lib.Ps2_GetMapperEnabledDepthToRGB(self.device_handle, self.session, byref(enabled)),enabled
-    
-    def Ps2_GetMapperEnabledRGBToDepth(self): 
+        status = self.ps_cam_lib.Ps2_GetMapperEnabledDepthToRGB(self.device_handle, self.session, byref(enabled))
+        if status == 0:
+            print("Depth to RGB Mapper:",enabled)
+        elif status != 0:
+            print("Failed to get mapper",status)
+            return None
         enabled = c_bool(True)
-        return self.ps_cam_lib.Ps2_GetMapperEnabledRGBToDepth(self.device_handle, self.session, byref(enabled)),enabled
+        status = self.ps_cam_lib.Ps2_GetMapperEnabledRGBToDepth(self.device_handle, self.session, byref(enabled))
+        if status == 0:
+            print("RGB to Depth Mapper:",enabled)
+        elif status != 0:
+            print("Failed to get mapper",status)
+            return None
 
     def hot_plug_status_callback(self,callbackfunc= c_void_p): 
         callbackFunc_= CFUNCTYPE(c_void_p,POINTER(PsDeviceInfo),c_int32)(callbackfunc)    
@@ -451,12 +517,20 @@ class VzenseTofCam():
     def set_hot_plug_status(self):
         self.hot_plug_status_callback(self.hot_plug_state_callback_logic)
 
-    def Ps2_SetWDRPulseCount(self,wdrpulseCount = PsWDRPulseCount()): 
-        return self.ps_cam_lib.Ps2_SetWDRPulseCount(self.device_handle, self.session, wdrpulseCount)
+    def set_WDR_pulse_count(self,wdrpulseCount = PsWDRPulseCount()): 
+        status = self.ps_cam_lib.Ps2_SetWDRPulseCount(self.device_handle, self.session, wdrpulseCount)
+        if status == 0:
+            self.get_WDR_pulse_count()
+        else:
+            print("Failed to set WDR pulse count",status)
 
-    def Ps2_GetWDRPulseCount(self): 
+    def get_WDR_pulse_count(self): 
         wdrpulseCount = PsWDRPulseCount()
-        return self.ps_cam_lib.Ps2_GetWDRPulseCount(self.device_handle, self.session, byref(wdrpulseCount)),wdrpulseCount
+        status = self.ps_cam_lib.Ps2_GetWDRPulseCount(self.device_handle, self.session, byref(wdrpulseCount))
+        if status == 0:
+            print("WDR pulse count:",wdrpulseCount)
+        else:
+            print("Failed to get WDR pulse count",status)
 
     def serial_number(self): 
         tmp = c_char * 64
@@ -477,12 +551,20 @@ class VzenseTofCam():
             print("Failed to get firmware version: ", status)
         return 
 
-    def Ps2_SetDSPEnabled(self, enabled = c_bool(True)): 
-        return self.ps_cam_lib.Ps2_SetDSPEnabled(self.device_handle, self.session, enabled)
+    def set_DSP(self, enabled = c_bool(True)): 
+        status = self.ps_cam_lib.Ps2_SetDSPEnabled(self.device_handle, self.session, enabled)
+        if status == 0:
+            self.get_DSP()
+        else:
+            print("Failed to set DSP",status)
     
-    def Ps2_GetDSPEnabled(self): 
+    def get_DSP(self): 
         enabled = c_bool(True)
-        return self.ps_cam_lib.Ps2_GetDSPEnabled(self.device_handle, self.session, byref(enabled)),enabled
+        status = self.ps_cam_lib.Ps2_GetDSPEnabled(self.device_handle, self.session, byref(enabled))
+        if status == 0:
+            print("DSP enabled:",enabled)
+        else:
+            print("Failed to get DSP state",status)
 
     def set_slave_mode(self, en = True):
         match en:
@@ -497,20 +579,28 @@ class VzenseTofCam():
         if status != 0:  
             print("Failed to set slave mode:", status)
     
-    def Ps2_SetTofFrameRate(self, rate = c_uint8(30)): 
-        return self.ps_cam_lib.Ps2_SetTofFrameRate(self.device_handle, self.session, rate)
+    def set_ToF_frame_rate(self, rate = c_uint8(30)): 
+        status = self.ps_cam_lib.Ps2_SetTofFrameRate(self.device_handle, self.session, rate)
+        if status != 0:  
+            print("Failed to set ToF frame rate:",status)
     
-    def Ps2_GetTofFrameRate(self): 
+    def get_ToF_frame_rate(self): 
         rate = c_uint8(30)
-        return self.ps_cam_lib.Ps2_GetTofFrameRate(self.device_handle, self.session, byref(rate)),rate
+        status = self.ps_cam_lib.Ps2_GetTofFrameRate(self.device_handle, self.session, byref(rate))
+        if status != 0:  
+            print("Failed to get ToF frame rate:",status)
+        else:
+            print("ToF frame rate: %i" %(rate))
 
     def set_standby(self, enabled = c_bool(True)): 
         status = self.ps_cam_lib.Ps2_SetStandByEnabled(self.device_handle, self.session, enabled)
         if status != 0:  
             print("Failed to set standby:", status)
     
-    def Ps2_SetWaitTimeOfReadNextFrame(self, time = c_uint16(33)): 
-        return self.ps_cam_lib.Ps2_SetWaitTimeOfReadNextFrame(self.device_handle, self.session, time)
+    def set_wait_time_of_read_frame(self, time = c_uint16(33)): 
+        status = self.ps_cam_lib.Ps2_SetWaitTimeOfReadNextFrame(self.device_handle, self.session, time)
+        if status != 0:
+            print("Failed to set wait time of read frame",status)
     
     def SDK_version(self): 
         tmp = c_char * 64
@@ -521,15 +611,25 @@ class VzenseTofCam():
         else:
             print("Failed to get SDK version: ",status)
  
-    def Ps2_GetMappedPointDepthToRGB(self, depthPoint = PsDepthVector3(),rgbSize = PsVector2u16(640,480)): 
+    def get_mapped_point_depth_to_RGB(self, depthPoint = PsDepthVector3(),rgbSize = PsVector2u16(640,480)): 
         PosInRGB = PsVector2u16()
-        return self.ps_cam_lib.Ps2_GetMappedPointDepthToRGB(self.device_handle, self.session, depthPoint, rgbSize, byref(PosInRGB)),PosInRGB
+        status = self.ps_cam_lib.Ps2_GetMappedPointDepthToRGB(self.device_handle, self.session, depthPoint, rgbSize, byref(PosInRGB))
+        if status == 0:
+            print("Mapped point depth:",PosInRGB)
+        else:
+            print("Failed to get mapped point depth",status)
 
-    def Ps2_RebootCamera(self): 
-        return self.ps_cam_lib.Ps2_RebootCamera(self.device_handle, self.session)
+    def reboot_camera(self): 
+        status = self.ps_cam_lib.Ps2_RebootCamera(self.device_handle, self.session)
+        if status != 0:  
+            print("Failed to reboot camera:",status)
 
-    def Ps2_SetLegacyAlgorithmicEnabled(self, enabled = c_bool(True)): 
-        return self.ps_cam_lib.Ps2_SetLegacyAlgorithmicEnabled(self.device_handle, self.session, enabled)
+    def enable_legacy_algorithm(self, enabled = c_bool(True)): 
+        status = self.ps_cam_lib.Ps2_SetLegacyAlgorithmicEnabled(self.device_handle, self.session, enabled)
+        if status != 0:  
+            print("Failed to enable legacy algorithm:",status)
+        else:
+            print("Enabled legacy algorithm")
      
     def set_slave_trigger(self): 
         status = self.ps_cam_lib.Ps2_SetSlaveTrigger(self.device_handle, self.session)
@@ -555,44 +655,122 @@ class VzenseTofCam():
         else:
             print("Failed to get MAC address: ",status)
          
-    def Ps2_SetRGBBrightness(self, value = c_char(0)):
-        return self.ps_cam_lib.Ps2_SetRGBBrightness(self.device_handle, self.session, value)
+    def set_RGB_brightness(self, value = c_char(0)):
+        status = self.ps_cam_lib.Ps2_SetRGBBrightness(self.device_handle, self.session, value)
+        if status == 0:
+            self.get_RGB_brightness()
+        else:
+            print("Failed to set RGB brightness",status)
          
-    def Ps2_GetRGBBrightness(self):
+    def get_RGB_brightness(self):
         value = c_char(0)
-        return self.ps_cam_lib.Ps2_GetRGBBrightness(self.device_handle, self.session, byref(value)),value
+        status = self.ps_cam_lib.Ps2_GetRGBBrightness(self.device_handle, self.session, byref(value))
+        if status == 0:
+            print("RGB brightness:",value)
+        else:
+            print("Failed to get RGB brightness",status)
 
-    def Ps2_SetRGBExposure(self, value = c_ubyte(0)):
-        return self.ps_cam_lib.Ps2_SetRGBExposure(self.device_handle, self.session, value)
+    def set_RGB_exposure(self, value = c_ubyte(0)):
+        status = self.ps_cam_lib.Ps2_SetRGBExposure(self.device_handle, self.session, value)
+        if status == 0:
+            self.get_RGB_exposure()
+        else:
+            print("Failed to set RGB brightness",status)
          
-    def Ps2_GetRGBExposure(self):
+    def get_RGB_exposure(self):
         value = c_ubyte(0)
-        return self.ps_cam_lib.Ps2_GetRGBExposure(self.device_handle, self.session, byref(value)),value
+        status = self.ps_cam_lib.Ps2_GetRGBExposure(self.device_handle, self.session, byref(value))
+        if status == 0:
+            print("RGB exposure:",value)
+        else:
+            print("Failed to get RGB brightness",status)
     
-    def Ps2_SetRGBFrequencyOfPowerLine(self, value = c_ubyte(0)):
-        return self.ps_cam_lib.Ps2_SetRGBFrequencyOfPowerLine(self.device_handle, self.session, value)
+    def set_RGB_frequency(self, value = c_ubyte(0)):
+        status = self.ps_cam_lib.Ps2_SetRGBFrequencyOfPowerLine(self.device_handle, self.session, value)
+        if status == 0:
+            self.get_RGB_frequency()
+        else:
+            print("Failed to set RGB frequency",status)
          
-    def Ps2_GetRGBFrequencyOfPowerLine(self):
+    def get_RGB_frequency(self):
         value = c_ubyte(0)
-        return self.ps_cam_lib.Ps2_GetRGBFrequencyOfPowerLine(self.device_handle, self.session, byref(value)),value
+        status = self.ps_cam_lib.Ps2_GetRGBFrequencyOfPowerLine(self.device_handle, self.session, byref(value))
+        if status == 0:
+            print("RGB Frequency:",value)
+        else:
+            print("Failed to get RGB frequency",status)
     
-    def Ps2_SetConfidenceFilterEnabled(self, enabled = c_bool(True)): 
-        return self.ps_cam_lib.Ps2_SetConfidenceFilterEnabled(self.device_handle, self.session, enabled)
+    def set_spatial_filter(self, enabled = c_bool(True)): 
+        status = self.ps_cam_lib.Ps2_SetSpatialFilterEnabled(self.device_handle, self.session, enabled)
+        if status == 0:
+            self.get_spatial_filter()
+        else:
+            print("Failed to set spatial filter",status)
     
-    def Ps2_GetConfidenceFilterEnabled(self): 
+    def get_spatial_filter(self): 
         enabled = c_bool(True)
-        return self.ps_cam_lib.Ps2_GetConfidenceFilterEnabled(self.device_handle, self.session, byref(enabled)),enabled
+        status = self.ps_cam_lib.Ps2_GetSpatialFilterEnabled(self.device_handle, self.session, byref(enabled))
+        if status == 0:
+            print("Spatial filter enabled:",enabled)
+        else:
+            print("Failed to get spatial filter status",status)
 
-    def Ps2_SetConfidenceFilterThreshold(self, threshold = c_uint16(20)):
-        return self.ps_cam_lib.Ps2_SetConfidenceFilterThreshold(self.device_handle, self.session, threshold) 
-               
-    def Ps2_GetConfidenceFilterThreshold(self):
+    def set_time_filter(self, enabled = c_bool(True)): 
+        status = self.ps_cam_lib.Ps2_SetTimeFilterEnabled(self.device_handle, self.session, enabled)
+        if status == 0:
+            self.set_time_filter()
+        else:
+            print("Failed to set time filter status",status)
+    
+    def get_time_filter(self): 
+        enabled = c_bool(True)
+        status = self.ps_cam_lib.Ps2_GetTimeFilterEnabled(self.device_handle, self.session, byref(enabled)),enabled
+        if status == 0:
+            print("Time filter enabled:",enabled)
+        else:
+            print("Failed to get tiue filter status",status)
+    
+    def set_confidence_filter(self, enabled = c_bool(True)): 
+        status = self.ps_cam_lib.Ps2_SetConfidenceFilterEnabled(self.device_handle, self.session, enabled)
+        if status == 0:
+            self.get_confidence_filter()
+        else:
+            print("Failed to set confidence filter",status)
+
+    def get_confidence_filter(self): 
+        enabled = c_bool(True)
+        status = self.ps_cam_lib.Ps2_GetConfidenceFilterEnabled(self.device_handle, self.session, byref(enabled))
+        if status == 0:
+            print("Confidence filter enabled:",enabled)
+        else:
+            print("Failed to get confidence filter status",status)
+
+    def set_confidence_filter_threshold(self, threshold = c_uint16(20)):
+        status = self.ps_cam_lib.Ps2_SetConfidenceFilterThreshold(self.device_handle, self.session, threshold) 
+        if status == 0:
+            self.get_confidence_filter_threshold()
+        else:
+            print("Failed to set confidence filter threshold",status)
+
+    def get_confidence_filter_threshold(self):
         thres = c_uint16()
-        return self.ps_cam_lib.Ps2_GetConfidenceFilterThreshold(self.device_handle, self.session, byref(thres)), thres.value
+        status = self.ps_cam_lib.Ps2_GetConfidenceFilterThreshold(self.device_handle, self.session, byref(thres))
+        if status == 0:
+            print("Confidence filter threshold:",thres.value)
+        else:
+            print("Failed to get confidence filter threshold",status)
 
-    def Ps2_SetWDRConfidenceFilterThreshold(self, wdrconfidencethreshold = PsWDRConfidenceThreshold()):
-        return self.ps_cam_lib.Ps2_SetWDRConfidenceFilterThreshold(self.device_handle, self.session, wdrconfidencethreshold) 
-               
-    def Ps2_GetConfidenceFilterThreshold(self):
+    def set_WDR_confidence_filter_threshold(self, wdrconfidencethreshold = PsWDRConfidenceThreshold()):
+        status = self.ps_cam_lib.Ps2_SetWDRConfidenceFilterThreshold(self.device_handle, self.session, wdrconfidencethreshold) 
+        if status == 0:
+            self.get_WDR_confidence_filter_threshold()
+        else:
+            print("Failed to set WDR confidence filter threshold",status)
+
+    def get_WDR_confidence_filter_threshold(self):
         wdrconfidencethreshold = PsWDRConfidenceThreshold()
-        return self.ps_cam_lib.Ps2_GetConfidenceFilterThreshold(self.device_handle, self.session, byref(wdrconfidencethreshold)), wdrconfidencethreshold
+        status = self.ps_cam_lib.Ps2_GetConfidenceFilterThreshold(self.device_handle, self.session, byref(wdrconfidencethreshold))
+        if status == 0:
+            print("WDR confidence filter threshold:",wdrconfidencethreshold)
+        else:
+            print("Failed to get WDR confidence filter threshold",status)

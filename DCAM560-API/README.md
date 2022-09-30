@@ -1,35 +1,23 @@
 ## Python Wrapper for Vzense Base SDK API
 
-Python wrapper is an opensource project of Vzense TOF camera API.
+Python wrapper is an opensource project of Vzense TOF camera API. This API has been heavily modified to better fit the needs of the VCU research team
 
 The goal of this project is to help developers use Vzense TOF camera via python method easily.
 
-- PythonSDK version: V3.5.4.1
-- VzenseBaseSDK version: V3.5.4
-
-### Supported Devices
-
-- DCAM710 
-- DCAM550U
-- DCAM550P
-- DCAM550E
-- DCAM560C
 ### Requirements
 
-- python version : 3.7.x
-- python modules : ctypes, numpy, opencv-python(display only)
+- Python version : 3.10.x
+- Python modules : ctypes, numpy, opencv-python
 
 ### Directory
 
-- **DCAM550**: the API and Sample code for DCAM550U/DCAM550P/DCAM550E
-- **DCAM560**: the API and Sample code for DCAM560CPRO/DCAM560CLITE
-- **DCAM710**: the API and Sample code for DCAM710
+- **DCAM560**: API and Sample code for DCAM560CPRO
 - **Lib**: VzenseBaseSDK dynamic library files
-- **install.py**: install file
-- **config.txt**: set the config that needed by 'install.py', such as:
+- **install.py**: Installation file
+- **config.txt**: Set config that is needed by 'install.py', such as:
 ```
 system = Windows64
-url = https://gitee.com
+url = https://github.com
 ```
 |system|details|
 |---|---|
@@ -46,19 +34,17 @@ url = https://gitee.com
 |https://gitee.com|
 |https://github.com|
 
-### Quick Start
+### Quick Start for API
 
-- step1. install modules:
+- Step 1: Install modules
          
 ```	 
 	  pip install numpy
 	  pip install opencv-python 
 ```
-- step2. Set 'config.txt' according to your needs
+- Step 2. Set 'config.txt' according to your needs
 
-- step3. Run the 'python install.py' 
+- Step 3. Execute 'python install.py' to install system libraries and drivers
 
-- step4. Switch to Samples under the product directory, run the sample that you need. 
-    	 
-         For example, go to the DCAM560/Samples/FrameViewer, then run 'python FrameViewer_DCAM560.py'
+- Step 4. Switch to src under the product directory, and utilize with the help of the example programs
 
