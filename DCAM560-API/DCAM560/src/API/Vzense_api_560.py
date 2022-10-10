@@ -430,32 +430,56 @@ class VzenseTofCam():
         else:
             print("Failed to get depth distortion correction status",status)
     
-    def Ps2_SetRGBDistortionCorrectionEnabled(self, enabled = c_bool(True)): 
-        return self.ps_cam_lib.Ps2_SetRGBDistortionCorrectionEnabled(self.device_handle, self.session, enabled)
-    
-    def Ps2_GetRGBDistortionCorrectionEnabled(self): 
+    def set_RGB_distortion_correction(self, enabled = c_bool(True)): 
+        status = self.ps_cam_lib.Ps2_SetRGBDistortionCorrectionEnabled(self.device_handle, self.session, enabled)
+        if status == 0:
+            self.get_RGB_distortion_correction()
+        else:
+            print("Failed to set RGB distortion correction",status)
+
+    def get_RGB_distortion_correction(self): 
         enabled = c_bool(True)
-        return self.ps_cam_lib.Ps2_GetRGBDistortionCorrectionEnabled(self.device_handle, self.session, byref(enabled)),enabled
+        status = self.ps_cam_lib.Ps2_GetRGBDistortionCorrectionEnabled(self.device_handle, self.session, byref(enabled))
+        if status == 0:
+            print("RGB distortion correction enabled:",enabled)
+        else:
+            print("Failed to get RGB distortion correction status",status)
 
-    def Ps2_SetComputeRealDepthCorrectionEnabled(self, enabled = c_bool(True)): 
-        return self.ps_cam_lib.Ps2_SetComputeRealDepthCorrectionEnabled(self.device_handle, self.session, enabled)
-    
-    def Ps2_GetComputeRealDepthCorrectionEnabled(self): 
+    def set_compute_depth_corection(self, enabled = c_bool(True)): 
+        status = self.ps_cam_lib.Ps2_SetComputeRealDepthCorrectionEnabled(self.device_handle, self.session, enabled)
+        if status == 0:
+            self.get_compute_depth_correction()
+        else:
+            print("Failed to set compute depth correction",status)
+
+    def get_compute_depth_correction(self): 
         enabled = c_bool(True)
-        return self.ps_cam_lib.Ps2_GetComputeRealDepthCorrectionEnabled(self.device_handle, self.session, byref(enabled)),enabled
+        status = self.ps_cam_lib.Ps2_GetComputeRealDepthCorrectionEnabled(self.device_handle, self.session, byref(enabled))
+        if status == 0:
+            print("Compute depth correction enabled:",enabled)
+        else:
+            print("Failed to get compute depth correction status",status)
 
-    def Ps2_SetDepthFrameEnabled(self, enabled = c_bool(True)): 
-        return self.ps_cam_lib.Ps2_SetDepthFrameEnabled(self.device_handle, self.session, enabled)
+    def set_depth_frame(self, enabled = c_bool(True)): 
+        status = self.ps_cam_lib.Ps2_SetDepthFrameEnabled(self.device_handle, self.session, enabled)
+        if status != 0:
+            print("Failed to set depth frame",status)
 
-    def Ps2_SetIrFrameEnabled(self, enabled = c_bool(True)): 
-        return self.ps_cam_lib.Ps2_SetIrFrameEnabled(self.device_handle, self.session, enabled)
+    def set_IR_frame(self, enabled = c_bool(True)): 
+        status = self.ps_cam_lib.Ps2_SetIrFrameEnabled(self.device_handle, self.session, enabled)
+        if status != 0:
+            print("Failed to set IR frame",status)
 
-    def Ps2_SetRgbFrameEnabled(self, enabled = c_bool(True)): 
-        return self.ps_cam_lib.Ps2_SetRgbFrameEnabled(self.device_handle, self.session, enabled)
+    def set_RGB_frame(self, enabled = c_bool(True)): 
+        status = self.ps_cam_lib.Ps2_SetRgbFrameEnabled(self.device_handle, self.session, enabled)
+        if status != 0:
+            print("Failed to set RGB frame",status)
 
-    def Ps2_SetImageMirror(self, type = c_int32(0)): 
-        return self.ps_cam_lib.Ps2_SetImageMirror(self.device_handle, self.session, type)
-    
+    def set_image_mirror(self, type = c_int32(0)): 
+        status = self.ps_cam_lib.Ps2_SetImageMirror(self.device_handle, self.session, type)
+        if status != 0:
+            print("Failed to mirror image",status)
+
     def set_image_rotation(self, type = c_int32(0)): 
         status = self.ps_cam_lib.Ps2_SetImageRotation(self.device_handle, self.session, type)
         if status != 0:
