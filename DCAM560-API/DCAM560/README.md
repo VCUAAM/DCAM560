@@ -32,7 +32,11 @@ camera.open(device_info.ip,"IP")
 
 `frame = camera.get_frame("Method")` Gets the data from the read frame. Methods include "RGB", "Depth", and "IR". Default method is "Depth". 
 
+## Image Properties Retreival Methods
 
+`gmm = camera.get_GMM_gain()` Retreives the GMM (Gaussian Mixture Model) gain of the camera
+
+`pulse = camera.get_pulse_count()` Retreives the pulse count of the ToF camera 
 ## Camera Properties Methods
 
 `camera.serial_number()` Prints the serial number of the camera
