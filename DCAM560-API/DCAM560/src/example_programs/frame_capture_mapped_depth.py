@@ -11,16 +11,16 @@ frameready = camera.read_frame()
 if frameready and frameready.mappedDepth:      
     frame = camera.get_frame("Depth")
     folder = os.getcwd() + "/save"
-    filename = folder + "/mappeddepth.bin"
+    filename = folder + "/mappeddepth.txt"
 
     if not os.path.exists(folder):
         print("Creating folder")
         os.makedirs(folder)
     
-    file = open(filename,"wb+")
+    file = open(filename,"w+")
     
     for i in range(frame.dataLen):
-        file.write(c_uint8(frame.pFrameData[i]))
+        file.write(str(frame.pFrameData[i]))
         
     print("Successfully saved")
 camera.stop_stream()

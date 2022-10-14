@@ -13,15 +13,19 @@ frameready = camera.read_frame()
 if frameready and frameready.mappedRGB:      
     frame = camera.get_frame("RGB")
     folder = os.getcwd() + "/save"
-    filename = folder + "/mappedrgb.bin"
+    filename = folder + "/mappedrgb.txt"
     if not os.path.exists(folder):
         print("Creating save folder")
         os.makedirs(folder)
     
-    file = open(filename,"wb+")
-    for i in range(frame.dataLen):
-        file.write(c_uint8(frame.pFrameData[i]))
-            
+    file = open(filename,"w+")
+    rgb = []
+    for i in range(int(frame.dataLen/3)):
+        r = int(frame.pFrameData[3*i])
+        g = int(frame.pFrameData[3*i + 1])
+        b = int(frame.pFrameData[3*i + 2])
+        rgb.append([r,g,b])
+    file.write(str(rgb))      
     file.close()
     print("Successfully saved")
 camera.stop_stream() 
