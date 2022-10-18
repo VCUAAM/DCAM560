@@ -6,7 +6,7 @@ device_info = camera.connect()
 camera.open(device_info.uri)
 camera.start_stream()    
 camera.set_data_mode("depRGB")
-camera.set_RGB_resolution("640x480")
+camera.set_RGB_resolution("1600x1200")
 
 for i in range(30):
     frameready = camera.read_frame()
@@ -17,7 +17,7 @@ for i in range(30):
         else:
             print("RGB width:",frame.width,"Height:",frame.height)      
 
-camera.set_RGB_resolution("1600x1200")
+camera.set_RGB_resolution("800x600")
  
 for i in range(30):
     frameready = camera.read_frame()

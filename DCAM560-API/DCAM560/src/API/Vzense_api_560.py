@@ -55,8 +55,8 @@ class VzenseTofCam():
             exit()
         else:
             print("Camera connected")
-            print("Camera URI: " + (re.search("'(.*):",str(device_info.uri))).group(1))
-            print("Alias: " + (re.search("'(.*)'",str(device_info.alias))).group(1))
+            #print("Camera URI: " + (re.search("'(.*):",str(device_info.uri))).group(1))
+            #print("Alias: " + (re.search("'(.*)'",str(device_info.alias))).group(1))
             #print("Connection status: " + str(device_info.status))   
         return device_info
     
@@ -90,12 +90,13 @@ class VzenseTofCam():
             print('Failed to open: ' + str(status))
             quit()
     
-        print("Camera opened successfully")
+#print("Camera opened successfully")
 
     def close(self):
         status = self.ps_cam_lib.Ps2_CloseDevice(byref(self.device_handle))
-        if  status == 0:
-            print("Device closed successfully")
+        if status == 0:
+            time.sleep(.01)
+            #print("Device closed successfully")
         else:
             print('Failed to close: ' + str(status))   
 
@@ -302,9 +303,6 @@ class VzenseTofCam():
             print("Failed to set pixel color format:",status)
        
     def set_RGB_resolution(self, reso = "640x480"):
-        print(reso)
-        if reso == "800x600":
-            print("yes")
         match reso:
             case "640x480":
                 resolution = PsResolution.PsRGB_Resolution_640_480
@@ -320,7 +318,7 @@ class VzenseTofCam():
             print("Failed to set RGB resolution:",status)
             quit()
         else:
-            print("Set RGB resolution to %s:" %(reso),status)
+            print("Set RGB resolution to: %s" %(reso))
      
     def get_RGB_resolution(self):
         resolution = c_int(0)

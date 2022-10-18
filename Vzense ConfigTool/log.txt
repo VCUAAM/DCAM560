@@ -2615,3 +2615,554 @@
 (2022-09-30 14:55:03.587 Fri) Debug: File:() Line:(0) load json file
 (2022-09-30 14:55:34.478 Fri) Debug: File:() Line:(0) Control_Single::shutdownDCAM Ps2_StopStream  -104
 (2022-09-30 14:55:36.848 Fri) Debug: File:() Line:(0) "MainWindow  closeEvent() "
+(2022-10-18 14:34:49.538 Tue) Debug: File:() Line:(0) "version  2.3.8.3"
+(2022-10-18 14:34:49.607 Tue) Warning: File:() Line:(0) QObject::connect: No such slot DeviceList::popMenu(const QPoint&)
+(2022-10-18 14:34:49.608 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'treeWidget')
+(2022-10-18 14:34:49.608 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'DeviceList')
+(2022-10-18 14:34:49.846 Tue) Warning: File:() Line:(0) QObject::connect: No such signal DeviceList::selecJson(int)
+(2022-10-18 14:34:49.846 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'DeviceList')
+(2022-10-18 14:34:49.846 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'MainWidget')
+(2022-10-18 14:34:49.846 Tue) Warning: File:() Line:(0) QObject::connect: No such signal DeviceList::sgluri(QString)
+(2022-10-18 14:34:49.846 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'DeviceList')
+(2022-10-18 14:34:49.846 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'JsonWidget')
+(2022-10-18 14:34:49.846 Tue) Warning: File:() Line:(0) QObject::connect: No such slot DeviceList::slotConnected()
+(2022-10-18 14:34:49.847 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'JsonWidget')
+(2022-10-18 14:34:49.847 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'DeviceList')
+(2022-10-18 14:34:52.598 Tue) Debug: File:() Line:(0) 0
+(2022-10-18 14:34:52.599 Tue) Debug: File:() Line:(0) 561
+(2022-10-18 14:34:52.600 Tue) Debug: File:() Line:(0) DCAM560CPRO:VD56CPCJC4010002P
+(2022-10-18 14:34:53.310 Tue) Debug: File:() Line:(0) "VD56CPCJC4010002P"
+(2022-10-18 14:34:53.635 Tue) Debug: File:() Line:(0) "VD56CPCJC4010002P"
+(2022-10-18 14:34:53.637 Tue) Debug: File:() Line:(0) uri: "VD56CPCJC4010002P"
+(2022-10-18 14:34:53.637 Tue) Debug: File:() Line:(0) Ps2_GetDeviceCount  1
+(2022-10-18 14:34:53.637 Tue) Debug: File:() Line:(0) DCAM560CPRO:VD56CPCJC4010002P
+(2022-10-18 14:34:53.737 Tue) Debug: File:() Line:(0) 561      DCAM560CPRO:VD56CPCJC4010002P
+(2022-10-18 14:34:54.161 Tue) Debug: File:() Line:(0) buf: configOrig.json
+(2022-10-18 14:34:54.173 Tue) Debug: File:() Line:(0) WRQ
+(2022-10-18 14:34:57.113 Tue) Debug: File:() Line:(0) "DepthSensor:BG_threshold_range(read_only)"  check ok.
+(2022-10-18 14:34:57.113 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:BG_threshold"  check ok.
+(2022-10-18 14:34:57.113 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:depth_range"  check ok.
+(2022-10-18 14:34:57.113 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:gmm_gain"  check ok.
+(2022-10-18 14:34:57.113 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:pulse_count"  check ok.
+(2022-10-18 14:34:57.114 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config"  check ok.
+(2022-10-18 14:34:57.114 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number"  check ok.
+(2022-10-18 14:34:57.114 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number_Range(read_only)"  check ok.
+(2022-10-18 14:34:57.115 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Ratio"  check ok.
+(2022-10-18 14:34:57.115 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:BG_threshold"  check ok.
+(2022-10-18 14:34:57.115 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:depth_range"  check ok.
+(2022-10-18 14:34:57.115 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:gmm_gain"  check ok.
+(2022-10-18 14:34:57.115 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:pulse_count"  check ok.
+(2022-10-18 14:34:57.116 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0"  check ok.
+(2022-10-18 14:34:57.116 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:BG_threshold"  check ok.
+(2022-10-18 14:34:57.116 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:depth_range"  check ok.
+(2022-10-18 14:34:57.116 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:gmm_gain"  check ok.
+(2022-10-18 14:34:57.116 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:pulse_count"  check ok.
+(2022-10-18 14:34:57.116 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1"  check ok.
+(2022-10-18 14:34:57.116 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:BG_threshold"  check ok.
+(2022-10-18 14:34:57.116 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:depth_range"  check ok.
+(2022-10-18 14:34:57.117 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:gmm_gain"  check ok.
+(2022-10-18 14:34:57.117 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:pulse_count"  check ok.
+(2022-10-18 14:34:57.117 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2"  check ok.
+(2022-10-18 14:34:57.117 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config"  check ok.
+(2022-10-18 14:34:57.117 Tue) Debug: File:() Line:(0) "DepthSensor:depth_range_list(read_only)"  check ok.
+(2022-10-18 14:34:57.117 Tue) Debug: File:() Line:(0) "DepthSensor:enabled"  check ok.
+(2022-10-18 14:34:57.117 Tue) Debug: File:() Line:(0) "DepthSensor:gmm_gain_range(read_only)"  check ok.
+(2022-10-18 14:34:57.117 Tue) Debug: File:() Line:(0) "DepthSensor:pulse_count_range(read_only)"  check ok.
+(2022-10-18 14:34:57.118 Tue) Debug: File:() Line:(0) "DepthSensor:random_pattern"  check ok.
+(2022-10-18 14:34:57.118 Tue) Debug: File:() Line:(0) "DepthSensor"  check ok.
+(2022-10-18 14:34:57.118 Tue) Debug: File:() Line:(0) "Network:DHCP"  check ok.
+(2022-10-18 14:34:57.118 Tue) Debug: File:() Line:(0) "Network:ip_addr"  check ok.
+(2022-10-18 14:34:57.118 Tue) Debug: File:() Line:(0) "Network:subnetmask"  check ok.
+(2022-10-18 14:34:57.118 Tue) Debug: File:() Line:(0) "Network"  check ok.
+(2022-10-18 14:34:57.118 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_default"  check ok.
+(2022-10-18 14:34:57.118 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_range(read_only)"  check ok.
+(2022-10-18 14:34:57.119 Tue) Debug: File:() Line:(0) "RGBSensor:enabled"  check ok.
+(2022-10-18 14:34:57.119 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_default"  check ok.
+(2022-10-18 14:34:57.119 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_range(read_only)"  check ok.
+(2022-10-18 14:34:57.119 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_default"  check ok.
+(2022-10-18 14:34:57.119 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_list(read_only)"  check ok.
+(2022-10-18 14:34:57.119 Tue) Debug: File:() Line:(0) "RGBSensor"  check ok.
+(2022-10-18 14:34:57.119 Tue) Debug: File:() Line:(0) "WorkMode"  check ok.
+(2022-10-18 14:34:57.119 Tue) Debug: File:() Line:(0) "WorkMode_list(read_only)"  check ok.
+(2022-10-18 14:34:57.120 Tue) Debug: File:() Line:(0) "config_version"  check ok.
+(2022-10-18 14:34:57.120 Tue) Debug: File:() Line:(0) "datamode_default"  check ok.
+(2022-10-18 14:34:57.120 Tue) Debug: File:() Line:(0) "datamode_list(read_only)"  check ok.
+(2022-10-18 14:34:57.120 Tue) Debug: File:() Line:(0) "device_name"  check ok.
+(2022-10-18 14:34:57.120 Tue) Debug: File:() Line:(0) "frame_rate"  check ok.
+(2022-10-18 14:34:57.120 Tue) Debug: File:() Line:(0) "frame_rate_list(read_only)"  check ok.
+(2022-10-18 14:34:57.120 Tue) Debug: File:() Line:(0) "sync_enabled"  check ok.
+(2022-10-18 14:34:57.121 Tue) Debug: File:() Line:(0) load json file
+(2022-10-18 14:35:52.499 Tue) Debug: File:() Line:(0) NO
+(2022-10-18 14:35:53.829 Tue) Debug: File:() Line:(0) "DepthSensor:BG_threshold_range(read_only)"  check ok.
+(2022-10-18 14:35:53.830 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:BG_threshold"  check ok.
+(2022-10-18 14:35:53.830 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:depth_range"  check ok.
+(2022-10-18 14:35:53.830 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:gmm_gain"  check ok.
+(2022-10-18 14:35:53.831 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:pulse_count"  check ok.
+(2022-10-18 14:35:53.831 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config"  check ok.
+(2022-10-18 14:35:53.831 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number"  check ok.
+(2022-10-18 14:35:53.832 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number_Range(read_only)"  check ok.
+(2022-10-18 14:35:53.832 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Ratio"  check ok.
+(2022-10-18 14:35:53.832 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:BG_threshold"  check ok.
+(2022-10-18 14:35:53.833 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:depth_range"  check ok.
+(2022-10-18 14:35:53.833 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:gmm_gain"  check ok.
+(2022-10-18 14:35:53.833 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:pulse_count"  check ok.
+(2022-10-18 14:35:53.833 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0"  check ok.
+(2022-10-18 14:35:53.834 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:BG_threshold"  check ok.
+(2022-10-18 14:35:53.834 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:depth_range"  check ok.
+(2022-10-18 14:35:53.834 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:gmm_gain"  check ok.
+(2022-10-18 14:35:53.835 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:pulse_count"  check ok.
+(2022-10-18 14:35:53.835 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1"  check ok.
+(2022-10-18 14:35:53.835 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:BG_threshold"  check ok.
+(2022-10-18 14:35:53.835 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:depth_range"  check ok.
+(2022-10-18 14:35:53.835 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:gmm_gain"  check ok.
+(2022-10-18 14:35:53.835 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:pulse_count"  check ok.
+(2022-10-18 14:35:53.835 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2"  check ok.
+(2022-10-18 14:35:53.835 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config"  check ok.
+(2022-10-18 14:35:53.835 Tue) Debug: File:() Line:(0) "DepthSensor:depth_range_list(read_only)"  check ok.
+(2022-10-18 14:35:53.836 Tue) Debug: File:() Line:(0) "DepthSensor:enabled"  check ok.
+(2022-10-18 14:35:53.836 Tue) Debug: File:() Line:(0) "DepthSensor:gmm_gain_range(read_only)"  check ok.
+(2022-10-18 14:35:53.836 Tue) Debug: File:() Line:(0) "DepthSensor:pulse_count_range(read_only)"  check ok.
+(2022-10-18 14:35:53.836 Tue) Debug: File:() Line:(0) "DepthSensor:random_pattern"  check ok.
+(2022-10-18 14:35:53.836 Tue) Debug: File:() Line:(0) "DepthSensor"  check ok.
+(2022-10-18 14:35:53.836 Tue) Debug: File:() Line:(0) "Network:DHCP"  check ok.
+(2022-10-18 14:35:53.836 Tue) Debug: File:() Line:(0) "Network:ip_addr"  check ok.
+(2022-10-18 14:35:53.836 Tue) Debug: File:() Line:(0) "Network:subnetmask"  check ok.
+(2022-10-18 14:35:53.837 Tue) Debug: File:() Line:(0) "Network"  check ok.
+(2022-10-18 14:35:53.837 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_default"  check ok.
+(2022-10-18 14:35:53.837 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_range(read_only)"  check ok.
+(2022-10-18 14:35:53.837 Tue) Debug: File:() Line:(0) "RGBSensor:enabled"  check ok.
+(2022-10-18 14:35:53.837 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_default"  check ok.
+(2022-10-18 14:35:53.837 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_range(read_only)"  check ok.
+(2022-10-18 14:35:53.837 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_default"  check ok.
+(2022-10-18 14:35:53.837 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_list(read_only)"  check ok.
+(2022-10-18 14:35:53.837 Tue) Debug: File:() Line:(0) "RGBSensor"  check ok.
+(2022-10-18 14:35:53.838 Tue) Debug: File:() Line:(0) "WorkMode"  check ok.
+(2022-10-18 14:35:53.838 Tue) Debug: File:() Line:(0) "WorkMode_list(read_only)"  check ok.
+(2022-10-18 14:35:53.838 Tue) Debug: File:() Line:(0) "config_version"  check ok.
+(2022-10-18 14:35:53.838 Tue) Debug: File:() Line:(0) "datamode_default"  check ok.
+(2022-10-18 14:35:53.838 Tue) Debug: File:() Line:(0) "datamode_list(read_only)"  check ok.
+(2022-10-18 14:35:53.838 Tue) Debug: File:() Line:(0) "device_name"  check ok.
+(2022-10-18 14:35:53.838 Tue) Debug: File:() Line:(0) "frame_rate"  check ok.
+(2022-10-18 14:35:53.838 Tue) Debug: File:() Line:(0) "frame_rate_list(read_only)"  check ok.
+(2022-10-18 14:35:53.839 Tue) Debug: File:() Line:(0) "sync_enabled"  check ok.
+(2022-10-18 14:35:53.839 Tue) Debug: File:() Line:(0) load json file
+(2022-10-18 14:36:03.765 Tue) Debug: File:() Line:(0) "DepthSensor:BG_threshold_range(read_only)"  check ok.
+(2022-10-18 14:36:03.765 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:BG_threshold"  check ok.
+(2022-10-18 14:36:03.765 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:depth_range"  check ok.
+(2022-10-18 14:36:03.766 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:gmm_gain"  check ok.
+(2022-10-18 14:36:03.766 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:pulse_count"  check ok.
+(2022-10-18 14:36:03.766 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config"  check ok.
+(2022-10-18 14:36:03.767 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number"  check ok.
+(2022-10-18 14:36:03.767 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number_Range(read_only)"  check ok.
+(2022-10-18 14:36:03.767 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Ratio"  check ok.
+(2022-10-18 14:36:03.767 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:BG_threshold"  check ok.
+(2022-10-18 14:36:03.768 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:depth_range"  check ok.
+(2022-10-18 14:36:03.768 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:gmm_gain"  check ok.
+(2022-10-18 14:36:03.768 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:pulse_count"  check ok.
+(2022-10-18 14:36:03.768 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0"  check ok.
+(2022-10-18 14:36:03.768 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:BG_threshold"  check ok.
+(2022-10-18 14:36:03.769 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:depth_range"  check ok.
+(2022-10-18 14:36:03.769 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:gmm_gain"  check ok.
+(2022-10-18 14:36:03.769 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:pulse_count"  check ok.
+(2022-10-18 14:36:03.769 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1"  check ok.
+(2022-10-18 14:36:03.769 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:BG_threshold"  check ok.
+(2022-10-18 14:36:03.769 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:depth_range"  check ok.
+(2022-10-18 14:36:03.769 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:gmm_gain"  check ok.
+(2022-10-18 14:36:03.769 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:pulse_count"  check ok.
+(2022-10-18 14:36:03.770 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2"  check ok.
+(2022-10-18 14:36:03.770 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config"  check ok.
+(2022-10-18 14:36:03.770 Tue) Debug: File:() Line:(0) "DepthSensor:depth_range_list(read_only)"  check ok.
+(2022-10-18 14:36:03.770 Tue) Debug: File:() Line:(0) "DepthSensor:enabled"  check ok.
+(2022-10-18 14:36:03.770 Tue) Debug: File:() Line:(0) "DepthSensor:gmm_gain_range(read_only)"  check ok.
+(2022-10-18 14:36:03.770 Tue) Debug: File:() Line:(0) "DepthSensor:pulse_count_range(read_only)"  check ok.
+(2022-10-18 14:36:03.770 Tue) Debug: File:() Line:(0) "DepthSensor:random_pattern"  check ok.
+(2022-10-18 14:36:03.770 Tue) Debug: File:() Line:(0) "DepthSensor"  check ok.
+(2022-10-18 14:36:03.771 Tue) Debug: File:() Line:(0) "Network:DHCP"  check ok.
+(2022-10-18 14:36:03.771 Tue) Debug: File:() Line:(0) "Network:ip_addr"  check ok.
+(2022-10-18 14:36:03.771 Tue) Debug: File:() Line:(0) "Network:subnetmask"  check ok.
+(2022-10-18 14:36:03.771 Tue) Debug: File:() Line:(0) "Network"  check ok.
+(2022-10-18 14:36:03.771 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_default"  check ok.
+(2022-10-18 14:36:03.771 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_range(read_only)"  check ok.
+(2022-10-18 14:36:03.771 Tue) Debug: File:() Line:(0) "RGBSensor:enabled"  check ok.
+(2022-10-18 14:36:03.771 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_default"  check ok.
+(2022-10-18 14:36:03.772 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_range(read_only)"  check ok.
+(2022-10-18 14:36:03.772 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_default"  check ok.
+(2022-10-18 14:36:03.772 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_list(read_only)"  check ok.
+(2022-10-18 14:36:03.772 Tue) Debug: File:() Line:(0) "RGBSensor"  check ok.
+(2022-10-18 14:36:03.772 Tue) Debug: File:() Line:(0) "WorkMode"  check ok.
+(2022-10-18 14:36:03.772 Tue) Debug: File:() Line:(0) "WorkMode_list(read_only)"  check ok.
+(2022-10-18 14:36:03.772 Tue) Debug: File:() Line:(0) "config_version"  check ok.
+(2022-10-18 14:36:03.772 Tue) Debug: File:() Line:(0) "datamode_default"  check ok.
+(2022-10-18 14:36:03.773 Tue) Debug: File:() Line:(0) "datamode_list(read_only)"  check ok.
+(2022-10-18 14:36:03.773 Tue) Debug: File:() Line:(0) "device_name"  check ok.
+(2022-10-18 14:36:03.773 Tue) Debug: File:() Line:(0) "frame_rate"  check ok.
+(2022-10-18 14:36:03.773 Tue) Debug: File:() Line:(0) "frame_rate_list(read_only)"  check ok.
+(2022-10-18 14:36:03.773 Tue) Debug: File:() Line:(0) "sync_enabled"  check ok.
+(2022-10-18 14:36:03.773 Tue) Debug: File:() Line:(0) dump json file 
+
+(2022-10-18 14:36:03.782 Tue) Debug: File:() Line:(0) buf: config.json
+(2022-10-18 14:36:03.782 Tue) Debug: File:() Line:(0) RRQ
+(2022-10-18 14:36:03.782 Tue) Debug: File:() Line:(0) fileName: config.json
+(2022-10-18 14:36:03.793 Tue) Debug: File:() Line:(0) the last packet
+(2022-10-18 14:36:03.795 Tue) Debug: File:() Line:(0) translate complete...
+(2022-10-18 14:36:04.441 Tue) Debug: File:() Line:(0) JsonWidget::jsonUpgradeInfoF StatusCallback: DEVICE_UPGRADE_JSON_CHECK_DONE status: OK 
+
+(2022-10-18 14:36:05.789 Tue) Debug: File:() Line:(0) Control_Single::shutdownDCAM Ps2_StopStream  -104
+(2022-10-18 14:36:22.433 Tue) Debug: File:() Line:(0) "version  2.3.8.3"
+(2022-10-18 14:36:22.502 Tue) Warning: File:() Line:(0) QObject::connect: No such slot DeviceList::popMenu(const QPoint&)
+(2022-10-18 14:36:22.502 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'treeWidget')
+(2022-10-18 14:36:22.502 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'DeviceList')
+(2022-10-18 14:36:22.734 Tue) Warning: File:() Line:(0) QObject::connect: No such signal DeviceList::selecJson(int)
+(2022-10-18 14:36:22.735 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'DeviceList')
+(2022-10-18 14:36:22.735 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'MainWidget')
+(2022-10-18 14:36:22.735 Tue) Warning: File:() Line:(0) QObject::connect: No such signal DeviceList::sgluri(QString)
+(2022-10-18 14:36:22.735 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'DeviceList')
+(2022-10-18 14:36:22.735 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'JsonWidget')
+(2022-10-18 14:36:22.735 Tue) Warning: File:() Line:(0) QObject::connect: No such slot DeviceList::slotConnected()
+(2022-10-18 14:36:22.735 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'JsonWidget')
+(2022-10-18 14:36:22.736 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'DeviceList')
+(2022-10-18 14:36:25.489 Tue) Debug: File:() Line:(0) 0
+(2022-10-18 14:36:25.489 Tue) Debug: File:() Line:(0) 561
+(2022-10-18 14:36:25.490 Tue) Debug: File:() Line:(0) DCAM560CPRO:VD56CPCJC4010002P
+(2022-10-18 14:36:26.274 Tue) Debug: File:() Line:(0) "VD56CPCJC4010002P"
+(2022-10-18 14:36:26.786 Tue) Debug: File:() Line:(0) "VD56CPCJC4010002P"
+(2022-10-18 14:36:26.834 Tue) Debug: File:() Line:(0) "VD56CPCJC4010002P"
+(2022-10-18 14:36:26.834 Tue) Debug: File:() Line:(0) uri: "VD56CPCJC4010002P"
+(2022-10-18 14:36:26.835 Tue) Debug: File:() Line:(0) Ps2_GetDeviceCount  1
+(2022-10-18 14:36:26.835 Tue) Debug: File:() Line:(0) DCAM560CPRO:VD56CPCJC4010002P
+(2022-10-18 14:36:26.931 Tue) Debug: File:() Line:(0) 561      DCAM560CPRO:VD56CPCJC4010002P
+(2022-10-18 14:36:27.367 Tue) Debug: File:() Line:(0) buf: configOrig.json
+(2022-10-18 14:36:27.380 Tue) Debug: File:() Line:(0) WRQ
+(2022-10-18 14:36:30.108 Tue) Debug: File:() Line:(0) "DepthSensor:BG_threshold_range(read_only)"  check ok.
+(2022-10-18 14:36:30.109 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:BG_threshold"  check ok.
+(2022-10-18 14:36:30.110 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:depth_range"  check ok.
+(2022-10-18 14:36:30.110 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:gmm_gain"  check ok.
+(2022-10-18 14:36:30.110 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:pulse_count"  check ok.
+(2022-10-18 14:36:30.111 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config"  check ok.
+(2022-10-18 14:36:30.111 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number"  check ok.
+(2022-10-18 14:36:30.111 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number_Range(read_only)"  check ok.
+(2022-10-18 14:36:30.111 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Ratio"  check ok.
+(2022-10-18 14:36:30.112 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:BG_threshold"  check ok.
+(2022-10-18 14:36:30.112 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:depth_range"  check ok.
+(2022-10-18 14:36:30.112 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:gmm_gain"  check ok.
+(2022-10-18 14:36:30.112 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:pulse_count"  check ok.
+(2022-10-18 14:36:30.112 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0"  check ok.
+(2022-10-18 14:36:30.112 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:BG_threshold"  check ok.
+(2022-10-18 14:36:30.112 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:depth_range"  check ok.
+(2022-10-18 14:36:30.113 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:gmm_gain"  check ok.
+(2022-10-18 14:36:30.113 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:pulse_count"  check ok.
+(2022-10-18 14:36:30.113 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1"  check ok.
+(2022-10-18 14:36:30.113 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:BG_threshold"  check ok.
+(2022-10-18 14:36:30.113 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:depth_range"  check ok.
+(2022-10-18 14:36:30.113 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:gmm_gain"  check ok.
+(2022-10-18 14:36:30.113 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:pulse_count"  check ok.
+(2022-10-18 14:36:30.113 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2"  check ok.
+(2022-10-18 14:36:30.114 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config"  check ok.
+(2022-10-18 14:36:30.114 Tue) Debug: File:() Line:(0) "DepthSensor:depth_range_list(read_only)"  check ok.
+(2022-10-18 14:36:30.114 Tue) Debug: File:() Line:(0) "DepthSensor:enabled"  check ok.
+(2022-10-18 14:36:30.114 Tue) Debug: File:() Line:(0) "DepthSensor:gmm_gain_range(read_only)"  check ok.
+(2022-10-18 14:36:30.114 Tue) Debug: File:() Line:(0) "DepthSensor:pulse_count_range(read_only)"  check ok.
+(2022-10-18 14:36:30.115 Tue) Debug: File:() Line:(0) "DepthSensor:random_pattern"  check ok.
+(2022-10-18 14:36:30.115 Tue) Debug: File:() Line:(0) "DepthSensor"  check ok.
+(2022-10-18 14:36:30.115 Tue) Debug: File:() Line:(0) "Network:DHCP"  check ok.
+(2022-10-18 14:36:30.115 Tue) Debug: File:() Line:(0) "Network:ip_addr"  check ok.
+(2022-10-18 14:36:30.116 Tue) Debug: File:() Line:(0) "Network:subnetmask"  check ok.
+(2022-10-18 14:36:30.116 Tue) Debug: File:() Line:(0) "Network"  check ok.
+(2022-10-18 14:36:30.116 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_default"  check ok.
+(2022-10-18 14:36:30.116 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_range(read_only)"  check ok.
+(2022-10-18 14:36:30.116 Tue) Debug: File:() Line:(0) "RGBSensor:enabled"  check ok.
+(2022-10-18 14:36:30.117 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_default"  check ok.
+(2022-10-18 14:36:30.117 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_range(read_only)"  check ok.
+(2022-10-18 14:36:30.117 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_default"  check ok.
+(2022-10-18 14:36:30.117 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_list(read_only)"  check ok.
+(2022-10-18 14:36:30.117 Tue) Debug: File:() Line:(0) "RGBSensor"  check ok.
+(2022-10-18 14:36:30.117 Tue) Debug: File:() Line:(0) "WorkMode"  check ok.
+(2022-10-18 14:36:30.117 Tue) Debug: File:() Line:(0) "WorkMode_list(read_only)"  check ok.
+(2022-10-18 14:36:30.117 Tue) Debug: File:() Line:(0) "config_version"  check ok.
+(2022-10-18 14:36:30.118 Tue) Debug: File:() Line:(0) "datamode_default"  check ok.
+(2022-10-18 14:36:30.118 Tue) Debug: File:() Line:(0) "datamode_list(read_only)"  check ok.
+(2022-10-18 14:36:30.118 Tue) Debug: File:() Line:(0) "device_name"  check ok.
+(2022-10-18 14:36:30.118 Tue) Debug: File:() Line:(0) "frame_rate"  check ok.
+(2022-10-18 14:36:30.118 Tue) Debug: File:() Line:(0) "frame_rate_list(read_only)"  check ok.
+(2022-10-18 14:36:30.118 Tue) Debug: File:() Line:(0) "sync_enabled"  check ok.
+(2022-10-18 14:36:30.118 Tue) Debug: File:() Line:(0) load json file
+(2022-10-18 14:36:33.087 Tue) Debug: File:() Line:(0) Control_Single::shutdownDCAM Ps2_StopStream  -104
+(2022-10-18 14:36:33.273 Tue) Debug: File:() Line:(0) "MainWindow  closeEvent() "
+(2022-10-18 14:52:17.202 Tue) Debug: File:() Line:(0) "version  2.3.8.3"
+(2022-10-18 14:52:17.270 Tue) Warning: File:() Line:(0) QObject::connect: No such slot DeviceList::popMenu(const QPoint&)
+(2022-10-18 14:52:17.270 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'treeWidget')
+(2022-10-18 14:52:17.271 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'DeviceList')
+(2022-10-18 14:52:17.497 Tue) Warning: File:() Line:(0) QObject::connect: No such signal DeviceList::selecJson(int)
+(2022-10-18 14:52:17.497 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'DeviceList')
+(2022-10-18 14:52:17.497 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'MainWidget')
+(2022-10-18 14:52:17.497 Tue) Warning: File:() Line:(0) QObject::connect: No such signal DeviceList::sgluri(QString)
+(2022-10-18 14:52:17.498 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'DeviceList')
+(2022-10-18 14:52:17.498 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'JsonWidget')
+(2022-10-18 14:52:17.498 Tue) Warning: File:() Line:(0) QObject::connect: No such slot DeviceList::slotConnected()
+(2022-10-18 14:52:17.498 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'JsonWidget')
+(2022-10-18 14:52:17.498 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'DeviceList')
+(2022-10-18 14:52:20.274 Tue) Debug: File:() Line:(0) 0
+(2022-10-18 14:52:20.275 Tue) Debug: File:() Line:(0) 561
+(2022-10-18 14:52:20.275 Tue) Debug: File:() Line:(0) DCAM560CPRO:VD56CPCJC4010002P
+(2022-10-18 14:52:21.829 Tue) Debug: File:() Line:(0) "VD56CPCJC4010002P"
+(2022-10-18 14:52:21.900 Tue) Debug: File:() Line:(0) "VD56CPCJC4010002P"
+(2022-10-18 14:52:21.900 Tue) Debug: File:() Line:(0) uri: "VD56CPCJC4010002P"
+(2022-10-18 14:52:21.901 Tue) Debug: File:() Line:(0) Ps2_GetDeviceCount  1
+(2022-10-18 14:52:21.901 Tue) Debug: File:() Line:(0) DCAM560CPRO:VD56CPCJC4010002P
+(2022-10-18 14:52:21.996 Tue) Debug: File:() Line:(0) 561      DCAM560CPRO:VD56CPCJC4010002P
+(2022-10-18 14:52:22.418 Tue) Debug: File:() Line:(0) buf: configOrig.json
+(2022-10-18 14:52:22.433 Tue) Debug: File:() Line:(0) WRQ
+(2022-10-18 14:52:25.804 Tue) Debug: File:() Line:(0) "DepthSensor:BG_threshold_range(read_only)"  check ok.
+(2022-10-18 14:52:25.804 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:BG_threshold"  check ok.
+(2022-10-18 14:52:25.804 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:depth_range"  check ok.
+(2022-10-18 14:52:25.805 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:gmm_gain"  check ok.
+(2022-10-18 14:52:25.806 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:pulse_count"  check ok.
+(2022-10-18 14:52:25.806 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config"  check ok.
+(2022-10-18 14:52:25.806 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number"  check ok.
+(2022-10-18 14:52:25.807 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number_Range(read_only)"  check ok.
+(2022-10-18 14:52:25.807 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Ratio"  check ok.
+(2022-10-18 14:52:25.807 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:BG_threshold"  check ok.
+(2022-10-18 14:52:25.807 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:depth_range"  check ok.
+(2022-10-18 14:52:25.807 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:gmm_gain"  check ok.
+(2022-10-18 14:52:25.807 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:pulse_count"  check ok.
+(2022-10-18 14:52:25.807 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0"  check ok.
+(2022-10-18 14:52:25.808 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:BG_threshold"  check ok.
+(2022-10-18 14:52:25.808 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:depth_range"  check ok.
+(2022-10-18 14:52:25.808 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:gmm_gain"  check ok.
+(2022-10-18 14:52:25.808 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:pulse_count"  check ok.
+(2022-10-18 14:52:25.808 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1"  check ok.
+(2022-10-18 14:52:25.809 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:BG_threshold"  check ok.
+(2022-10-18 14:52:25.809 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:depth_range"  check ok.
+(2022-10-18 14:52:25.809 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:gmm_gain"  check ok.
+(2022-10-18 14:52:25.809 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:pulse_count"  check ok.
+(2022-10-18 14:52:25.809 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2"  check ok.
+(2022-10-18 14:52:25.809 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config"  check ok.
+(2022-10-18 14:52:25.809 Tue) Debug: File:() Line:(0) "DepthSensor:depth_range_list(read_only)"  check ok.
+(2022-10-18 14:52:25.809 Tue) Debug: File:() Line:(0) "DepthSensor:enabled"  check ok.
+(2022-10-18 14:52:25.810 Tue) Debug: File:() Line:(0) "DepthSensor:gmm_gain_range(read_only)"  check ok.
+(2022-10-18 14:52:25.810 Tue) Debug: File:() Line:(0) "DepthSensor:pulse_count_range(read_only)"  check ok.
+(2022-10-18 14:52:25.810 Tue) Debug: File:() Line:(0) "DepthSensor:random_pattern"  check ok.
+(2022-10-18 14:52:25.810 Tue) Debug: File:() Line:(0) "DepthSensor"  check ok.
+(2022-10-18 14:52:25.810 Tue) Debug: File:() Line:(0) "Network:DHCP"  check ok.
+(2022-10-18 14:52:25.810 Tue) Debug: File:() Line:(0) "Network:ip_addr"  check ok.
+(2022-10-18 14:52:25.810 Tue) Debug: File:() Line:(0) "Network:subnetmask"  check ok.
+(2022-10-18 14:52:25.810 Tue) Debug: File:() Line:(0) "Network"  check ok.
+(2022-10-18 14:52:25.811 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_default"  check ok.
+(2022-10-18 14:52:25.811 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_range(read_only)"  check ok.
+(2022-10-18 14:52:25.811 Tue) Debug: File:() Line:(0) "RGBSensor:enabled"  check ok.
+(2022-10-18 14:52:25.811 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_default"  check ok.
+(2022-10-18 14:52:25.811 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_range(read_only)"  check ok.
+(2022-10-18 14:52:25.811 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_default"  check ok.
+(2022-10-18 14:52:25.811 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_list(read_only)"  check ok.
+(2022-10-18 14:52:25.811 Tue) Debug: File:() Line:(0) "RGBSensor"  check ok.
+(2022-10-18 14:52:25.812 Tue) Debug: File:() Line:(0) "WorkMode"  check ok.
+(2022-10-18 14:52:25.812 Tue) Debug: File:() Line:(0) "WorkMode_list(read_only)"  check ok.
+(2022-10-18 14:52:25.812 Tue) Debug: File:() Line:(0) "config_version"  check ok.
+(2022-10-18 14:52:25.812 Tue) Debug: File:() Line:(0) "datamode_default"  check ok.
+(2022-10-18 14:52:25.812 Tue) Debug: File:() Line:(0) "datamode_list(read_only)"  check ok.
+(2022-10-18 14:52:25.812 Tue) Debug: File:() Line:(0) "device_name"  check ok.
+(2022-10-18 14:52:25.812 Tue) Debug: File:() Line:(0) "frame_rate"  check ok.
+(2022-10-18 14:52:25.812 Tue) Debug: File:() Line:(0) "frame_rate_list(read_only)"  check ok.
+(2022-10-18 14:52:25.813 Tue) Debug: File:() Line:(0) "sync_enabled"  check ok.
+(2022-10-18 14:52:25.813 Tue) Debug: File:() Line:(0) load json file
+(2022-10-18 14:52:54.821 Tue) Debug: File:() Line:(0) "DepthSensor:BG_threshold_range(read_only)"  check ok.
+(2022-10-18 14:52:54.821 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:BG_threshold"  check ok.
+(2022-10-18 14:52:54.821 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:depth_range"  check ok.
+(2022-10-18 14:52:54.821 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:gmm_gain"  check ok.
+(2022-10-18 14:52:54.822 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:pulse_count"  check ok.
+(2022-10-18 14:52:54.822 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config"  check ok.
+(2022-10-18 14:52:54.822 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number"  check ok.
+(2022-10-18 14:52:54.822 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number_Range(read_only)"  check ok.
+(2022-10-18 14:52:54.822 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Ratio"  check ok.
+(2022-10-18 14:52:54.823 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:BG_threshold"  check ok.
+(2022-10-18 14:52:54.823 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:depth_range"  check ok.
+(2022-10-18 14:52:54.823 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:gmm_gain"  check ok.
+(2022-10-18 14:52:54.823 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:pulse_count"  check ok.
+(2022-10-18 14:52:54.823 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0"  check ok.
+(2022-10-18 14:52:54.824 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:BG_threshold"  check ok.
+(2022-10-18 14:52:54.824 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:depth_range"  check ok.
+(2022-10-18 14:52:54.824 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:gmm_gain"  check ok.
+(2022-10-18 14:52:54.825 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:pulse_count"  check ok.
+(2022-10-18 14:52:54.825 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1"  check ok.
+(2022-10-18 14:52:54.825 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:BG_threshold"  check ok.
+(2022-10-18 14:52:54.825 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:depth_range"  check ok.
+(2022-10-18 14:52:54.825 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:gmm_gain"  check ok.
+(2022-10-18 14:52:54.826 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:pulse_count"  check ok.
+(2022-10-18 14:52:54.826 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2"  check ok.
+(2022-10-18 14:52:54.826 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config"  check ok.
+(2022-10-18 14:52:54.826 Tue) Debug: File:() Line:(0) "DepthSensor:depth_range_list(read_only)"  check ok.
+(2022-10-18 14:52:54.826 Tue) Debug: File:() Line:(0) "DepthSensor:enabled"  check ok.
+(2022-10-18 14:52:54.826 Tue) Debug: File:() Line:(0) "DepthSensor:gmm_gain_range(read_only)"  check ok.
+(2022-10-18 14:52:54.826 Tue) Debug: File:() Line:(0) "DepthSensor:pulse_count_range(read_only)"  check ok.
+(2022-10-18 14:52:54.826 Tue) Debug: File:() Line:(0) "DepthSensor:random_pattern"  check ok.
+(2022-10-18 14:52:54.827 Tue) Debug: File:() Line:(0) "DepthSensor"  check ok.
+(2022-10-18 14:52:54.827 Tue) Debug: File:() Line:(0) "Network:DHCP"  check ok.
+(2022-10-18 14:52:54.827 Tue) Debug: File:() Line:(0) "Network:ip_addr"  check ok.
+(2022-10-18 14:52:54.827 Tue) Debug: File:() Line:(0) "Network:subnetmask"  check ok.
+(2022-10-18 14:52:54.828 Tue) Debug: File:() Line:(0) "Network"  check ok.
+(2022-10-18 14:52:54.828 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_default"  check ok.
+(2022-10-18 14:52:54.828 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_range(read_only)"  check ok.
+(2022-10-18 14:52:54.828 Tue) Debug: File:() Line:(0) "RGBSensor:enabled"  check ok.
+(2022-10-18 14:52:54.829 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_default"  check ok.
+(2022-10-18 14:52:54.829 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_range(read_only)"  check ok.
+(2022-10-18 14:52:54.829 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_default"  check ok.
+(2022-10-18 14:52:54.829 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_list(read_only)"  check ok.
+(2022-10-18 14:52:54.829 Tue) Debug: File:() Line:(0) "RGBSensor"  check ok.
+(2022-10-18 14:52:54.829 Tue) Debug: File:() Line:(0) "WorkMode"  check ok.
+(2022-10-18 14:52:54.829 Tue) Debug: File:() Line:(0) "WorkMode_list(read_only)"  check ok.
+(2022-10-18 14:52:54.830 Tue) Debug: File:() Line:(0) "config_version"  check ok.
+(2022-10-18 14:52:54.830 Tue) Debug: File:() Line:(0) "datamode_default"  check ok.
+(2022-10-18 14:52:54.830 Tue) Debug: File:() Line:(0) "datamode_list(read_only)"  check ok.
+(2022-10-18 14:52:54.830 Tue) Debug: File:() Line:(0) "device_name"  check ok.
+(2022-10-18 14:52:54.830 Tue) Debug: File:() Line:(0) "frame_rate"  check ok.
+(2022-10-18 14:52:54.830 Tue) Debug: File:() Line:(0) "frame_rate_list(read_only)"  check ok.
+(2022-10-18 14:52:54.830 Tue) Debug: File:() Line:(0) "sync_enabled"  check ok.
+(2022-10-18 14:52:54.831 Tue) Debug: File:() Line:(0) dump json file 
+
+(2022-10-18 14:52:54.840 Tue) Debug: File:() Line:(0) buf: config.json
+(2022-10-18 14:52:54.841 Tue) Debug: File:() Line:(0) RRQ
+(2022-10-18 14:52:54.841 Tue) Debug: File:() Line:(0) fileName: config.json
+(2022-10-18 14:52:54.859 Tue) Debug: File:() Line:(0) the last packet
+(2022-10-18 14:52:54.862 Tue) Debug: File:() Line:(0) translate complete...
+(2022-10-18 14:52:55.489 Tue) Debug: File:() Line:(0) JsonWidget::jsonUpgradeInfoF StatusCallback: DEVICE_UPGRADE_JSON_CHECK_DONE status: OK 
+
+(2022-10-18 14:52:56.850 Tue) Debug: File:() Line:(0) Control_Single::shutdownDCAM Ps2_StopStream  -104
+(2022-10-18 14:57:34.660 Tue) Debug: File:() Line:(0) "version  2.3.8.3"
+(2022-10-18 14:57:34.730 Tue) Warning: File:() Line:(0) QObject::connect: No such slot DeviceList::popMenu(const QPoint&)
+(2022-10-18 14:57:34.730 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'treeWidget')
+(2022-10-18 14:57:34.731 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'DeviceList')
+(2022-10-18 14:57:34.973 Tue) Warning: File:() Line:(0) QObject::connect: No such signal DeviceList::selecJson(int)
+(2022-10-18 14:57:34.974 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'DeviceList')
+(2022-10-18 14:57:34.974 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'MainWidget')
+(2022-10-18 14:57:34.974 Tue) Warning: File:() Line:(0) QObject::connect: No such signal DeviceList::sgluri(QString)
+(2022-10-18 14:57:34.975 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'DeviceList')
+(2022-10-18 14:57:34.975 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'JsonWidget')
+(2022-10-18 14:57:34.975 Tue) Warning: File:() Line:(0) QObject::connect: No such slot DeviceList::slotConnected()
+(2022-10-18 14:57:34.975 Tue) Warning: File:() Line:(0) QObject::connect:  (sender name:   'JsonWidget')
+(2022-10-18 14:57:34.975 Tue) Warning: File:() Line:(0) QObject::connect:  (receiver name: 'DeviceList')
+(2022-10-18 14:57:37.731 Tue) Debug: File:() Line:(0) 0
+(2022-10-18 14:57:37.732 Tue) Debug: File:() Line:(0) 561
+(2022-10-18 14:57:37.732 Tue) Debug: File:() Line:(0) DCAM560CPRO:VD56CPCJC4010002P
+(2022-10-18 14:57:38.563 Tue) Debug: File:() Line:(0) "VD56CPCJC4010002P"
+(2022-10-18 14:57:38.631 Tue) Debug: File:() Line:(0) "VD56CPCJC4010002P"
+(2022-10-18 14:57:38.633 Tue) Debug: File:() Line:(0) uri: "VD56CPCJC4010002P"
+(2022-10-18 14:57:38.633 Tue) Debug: File:() Line:(0) Ps2_GetDeviceCount  1
+(2022-10-18 14:57:38.634 Tue) Debug: File:() Line:(0) DCAM560CPRO:VD56CPCJC4010002P
+(2022-10-18 14:57:38.732 Tue) Debug: File:() Line:(0) 561      DCAM560CPRO:VD56CPCJC4010002P
+(2022-10-18 14:57:39.183 Tue) Debug: File:() Line:(0) buf: configOrig.json
+(2022-10-18 14:57:39.195 Tue) Debug: File:() Line:(0) WRQ
+(2022-10-18 14:57:42.789 Tue) Debug: File:() Line:(0) "DepthSensor:BG_threshold_range(read_only)"  check ok.
+(2022-10-18 14:57:42.789 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:BG_threshold"  check ok.
+(2022-10-18 14:57:42.789 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:depth_range"  check ok.
+(2022-10-18 14:57:42.790 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:gmm_gain"  check ok.
+(2022-10-18 14:57:42.790 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:pulse_count"  check ok.
+(2022-10-18 14:57:42.790 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config"  check ok.
+(2022-10-18 14:57:42.791 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number"  check ok.
+(2022-10-18 14:57:42.792 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number_Range(read_only)"  check ok.
+(2022-10-18 14:57:42.792 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Ratio"  check ok.
+(2022-10-18 14:57:42.792 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:BG_threshold"  check ok.
+(2022-10-18 14:57:42.793 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:depth_range"  check ok.
+(2022-10-18 14:57:42.793 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:gmm_gain"  check ok.
+(2022-10-18 14:57:42.793 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:pulse_count"  check ok.
+(2022-10-18 14:57:42.793 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0"  check ok.
+(2022-10-18 14:57:42.794 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:BG_threshold"  check ok.
+(2022-10-18 14:57:42.794 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:depth_range"  check ok.
+(2022-10-18 14:57:42.794 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:gmm_gain"  check ok.
+(2022-10-18 14:57:42.794 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:pulse_count"  check ok.
+(2022-10-18 14:57:42.794 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1"  check ok.
+(2022-10-18 14:57:42.795 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:BG_threshold"  check ok.
+(2022-10-18 14:57:42.795 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:depth_range"  check ok.
+(2022-10-18 14:57:42.795 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:gmm_gain"  check ok.
+(2022-10-18 14:57:42.795 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:pulse_count"  check ok.
+(2022-10-18 14:57:42.795 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2"  check ok.
+(2022-10-18 14:57:42.795 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config"  check ok.
+(2022-10-18 14:57:42.795 Tue) Debug: File:() Line:(0) "DepthSensor:depth_range_list(read_only)"  check ok.
+(2022-10-18 14:57:42.795 Tue) Debug: File:() Line:(0) "DepthSensor:enabled"  check ok.
+(2022-10-18 14:57:42.796 Tue) Debug: File:() Line:(0) "DepthSensor:gmm_gain_range(read_only)"  check ok.
+(2022-10-18 14:57:42.796 Tue) Debug: File:() Line:(0) "DepthSensor:pulse_count_range(read_only)"  check ok.
+(2022-10-18 14:57:42.796 Tue) Debug: File:() Line:(0) "DepthSensor:random_pattern"  check ok.
+(2022-10-18 14:57:42.796 Tue) Debug: File:() Line:(0) "DepthSensor"  check ok.
+(2022-10-18 14:57:42.796 Tue) Debug: File:() Line:(0) "Network:DHCP"  check ok.
+(2022-10-18 14:57:42.796 Tue) Debug: File:() Line:(0) "Network:ip_addr"  check ok.
+(2022-10-18 14:57:42.796 Tue) Debug: File:() Line:(0) "Network:subnetmask"  check ok.
+(2022-10-18 14:57:42.796 Tue) Debug: File:() Line:(0) "Network"  check ok.
+(2022-10-18 14:57:42.796 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_default"  check ok.
+(2022-10-18 14:57:42.797 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_range(read_only)"  check ok.
+(2022-10-18 14:57:42.797 Tue) Debug: File:() Line:(0) "RGBSensor:enabled"  check ok.
+(2022-10-18 14:57:42.797 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_default"  check ok.
+(2022-10-18 14:57:42.797 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_range(read_only)"  check ok.
+(2022-10-18 14:57:42.797 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_default"  check ok.
+(2022-10-18 14:57:42.797 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_list(read_only)"  check ok.
+(2022-10-18 14:57:42.797 Tue) Debug: File:() Line:(0) "RGBSensor"  check ok.
+(2022-10-18 14:57:42.797 Tue) Debug: File:() Line:(0) "WorkMode"  check ok.
+(2022-10-18 14:57:42.798 Tue) Debug: File:() Line:(0) "WorkMode_list(read_only)"  check ok.
+(2022-10-18 14:57:42.798 Tue) Debug: File:() Line:(0) "config_version"  check ok.
+(2022-10-18 14:57:42.798 Tue) Debug: File:() Line:(0) "datamode_default"  check ok.
+(2022-10-18 14:57:42.798 Tue) Debug: File:() Line:(0) "datamode_list(read_only)"  check ok.
+(2022-10-18 14:57:42.798 Tue) Debug: File:() Line:(0) "device_name"  check ok.
+(2022-10-18 14:57:42.798 Tue) Debug: File:() Line:(0) "frame_rate"  check ok.
+(2022-10-18 14:57:42.798 Tue) Debug: File:() Line:(0) "frame_rate_list(read_only)"  check ok.
+(2022-10-18 14:57:42.798 Tue) Debug: File:() Line:(0) "sync_enabled"  check ok.
+(2022-10-18 14:57:42.799 Tue) Debug: File:() Line:(0) load json file
+(2022-10-18 14:57:55.714 Tue) Debug: File:() Line:(0) "DepthSensor:BG_threshold_range(read_only)"  check ok.
+(2022-10-18 14:57:55.714 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:BG_threshold"  check ok.
+(2022-10-18 14:57:55.714 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:depth_range"  check ok.
+(2022-10-18 14:57:55.714 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:gmm_gain"  check ok.
+(2022-10-18 14:57:55.714 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config:pulse_count"  check ok.
+(2022-10-18 14:57:55.715 Tue) Debug: File:() Line:(0) "DepthSensor:Regular_config"  check ok.
+(2022-10-18 14:57:55.715 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number"  check ok.
+(2022-10-18 14:57:55.715 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Number_Range(read_only)"  check ok.
+(2022-10-18 14:57:55.715 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_Ratio"  check ok.
+(2022-10-18 14:57:55.715 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:BG_threshold"  check ok.
+(2022-10-18 14:57:55.716 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:depth_range"  check ok.
+(2022-10-18 14:57:55.716 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:gmm_gain"  check ok.
+(2022-10-18 14:57:55.716 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0:pulse_count"  check ok.
+(2022-10-18 14:57:55.716 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.0"  check ok.
+(2022-10-18 14:57:55.716 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:BG_threshold"  check ok.
+(2022-10-18 14:57:55.716 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:depth_range"  check ok.
+(2022-10-18 14:57:55.717 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:gmm_gain"  check ok.
+(2022-10-18 14:57:55.717 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1:pulse_count"  check ok.
+(2022-10-18 14:57:55.717 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.1"  check ok.
+(2022-10-18 14:57:55.717 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:BG_threshold"  check ok.
+(2022-10-18 14:57:55.717 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:depth_range"  check ok.
+(2022-10-18 14:57:55.717 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:gmm_gain"  check ok.
+(2022-10-18 14:57:55.717 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2:pulse_count"  check ok.
+(2022-10-18 14:57:55.718 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config:WDR_frame_No.2"  check ok.
+(2022-10-18 14:57:55.718 Tue) Debug: File:() Line:(0) "DepthSensor:WDR_config"  check ok.
+(2022-10-18 14:57:55.718 Tue) Debug: File:() Line:(0) "DepthSensor:depth_range_list(read_only)"  check ok.
+(2022-10-18 14:57:55.718 Tue) Debug: File:() Line:(0) "DepthSensor:enabled"  check ok.
+(2022-10-18 14:57:55.718 Tue) Debug: File:() Line:(0) "DepthSensor:gmm_gain_range(read_only)"  check ok.
+(2022-10-18 14:57:55.719 Tue) Debug: File:() Line:(0) "DepthSensor:pulse_count_range(read_only)"  check ok.
+(2022-10-18 14:57:55.719 Tue) Debug: File:() Line:(0) "DepthSensor:random_pattern"  check ok.
+(2022-10-18 14:57:55.719 Tue) Debug: File:() Line:(0) "DepthSensor"  check ok.
+(2022-10-18 14:57:55.719 Tue) Debug: File:() Line:(0) "Network:DHCP"  check ok.
+(2022-10-18 14:57:55.719 Tue) Debug: File:() Line:(0) "Network:ip_addr"  check ok.
+(2022-10-18 14:57:55.719 Tue) Debug: File:() Line:(0) "Network:subnetmask"  check ok.
+(2022-10-18 14:57:55.719 Tue) Debug: File:() Line:(0) "Network"  check ok.
+(2022-10-18 14:57:55.720 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_default"  check ok.
+(2022-10-18 14:57:55.720 Tue) Debug: File:() Line:(0) "RGBSensor:brightness_range(read_only)"  check ok.
+(2022-10-18 14:57:55.720 Tue) Debug: File:() Line:(0) "RGBSensor:enabled"  check ok.
+(2022-10-18 14:57:55.720 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_default"  check ok.
+(2022-10-18 14:57:55.720 Tue) Debug: File:() Line:(0) "RGBSensor:exposure_time_range(read_only)"  check ok.
+(2022-10-18 14:57:55.720 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_default"  check ok.
+(2022-10-18 14:57:55.720 Tue) Debug: File:() Line:(0) "RGBSensor:resolution_list(read_only)"  check ok.
+(2022-10-18 14:57:55.721 Tue) Debug: File:() Line:(0) "RGBSensor"  check ok.
+(2022-10-18 14:57:55.721 Tue) Debug: File:() Line:(0) "WorkMode"  check ok.
+(2022-10-18 14:57:55.721 Tue) Debug: File:() Line:(0) "WorkMode_list(read_only)"  check ok.
+(2022-10-18 14:57:55.721 Tue) Debug: File:() Line:(0) "config_version"  check ok.
+(2022-10-18 14:57:55.721 Tue) Debug: File:() Line:(0) "datamode_default"  check ok.
+(2022-10-18 14:57:55.721 Tue) Debug: File:() Line:(0) "datamode_list(read_only)"  check ok.
+(2022-10-18 14:57:55.721 Tue) Debug: File:() Line:(0) "device_name"  check ok.
+(2022-10-18 14:57:55.721 Tue) Debug: File:() Line:(0) "frame_rate"  check ok.
+(2022-10-18 14:57:55.722 Tue) Debug: File:() Line:(0) "frame_rate_list(read_only)"  check ok.
+(2022-10-18 14:57:55.722 Tue) Debug: File:() Line:(0) "sync_enabled"  check ok.
+(2022-10-18 14:57:55.722 Tue) Debug: File:() Line:(0) dump json file 
+
+(2022-10-18 14:57:55.762 Tue) Debug: File:() Line:(0) buf: config.json
+(2022-10-18 14:57:55.763 Tue) Debug: File:() Line:(0) RRQ
+(2022-10-18 14:57:55.763 Tue) Debug: File:() Line:(0) fileName: config.json
+(2022-10-18 14:57:55.776 Tue) Debug: File:() Line:(0) the last packet
+(2022-10-18 14:57:55.778 Tue) Debug: File:() Line:(0) translate complete...
+(2022-10-18 14:57:56.459 Tue) Debug: File:() Line:(0) JsonWidget::jsonUpgradeInfoF StatusCallback: DEVICE_UPGRADE_JSON_CHECK_DONE status: OK 
+
+(2022-10-18 14:57:57.775 Tue) Debug: File:() Line:(0) Control_Single::shutdownDCAM Ps2_StopStream  -104

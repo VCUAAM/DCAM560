@@ -1,5 +1,5 @@
 from API.Vzense_api_560 import *
-import time
+import cv2, numpy as np
 
 camera = VzenseTofCam()
 
@@ -9,25 +9,16 @@ camera.start_stream()
 camera.set_data_mode("depRGB")
 camera.set_mapper("RGB",True)
 frameready = camera.read_frame()
- 
+
 if frameready and frameready.mappedRGB:      
     frame = camera.get_frame("RGB")
-    folder = os.getcwd() + "/save"
-    filename = folder + "/mappedrgb.txt"
-    if not os.path.exists(folder):
-        print("Creating save folder")
-        os.makedirs(folder)
-    
-    file = open(filename,"w+")
-    rgb = []
-    for i in range(int(frame.dataLen/3)):
-        r = int(frame.pFrameData[3*i])
-        g = int(frame.pFrameData[3*i + 1])
-        b = int(frame.pFrameData[3*i + 2])
-        rgb.append([r,g,b])
-    file.write(str(rgb))      
-    file.close()
+    img_arr = np.zeros((frame.height,frame.width,3),dtype=int)
+    for i in range(len(img_arr)):
+        for j in range(len(img_arr[0])):
+            for k in range(3):
+                img_arr[i,j,k] = int(frame.pFrameData[3*len(img_arr[0])*i + 3*j + k])
+      
+    cv2.imwrite("save/mappedrgb.png",img_arr)
     print("Successfully saved")
 camera.stop_stream() 
 camera.close()
-           

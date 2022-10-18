@@ -1,4 +1,6 @@
 from API.Vzense_api_560 import *
+import open3d as o3d
+import numpy as np
 
 camera = VzenseTofCam()
 
@@ -22,11 +24,13 @@ if frameready and frameready.depth:
 
     for i in range(frame.width*frame.height):
         if pointlist[i].z!=0 and pointlist[i].z!=65535:
-            file.write("{0},{1},{2}\n".format(pointlist[i].x,pointlist[i].y,pointlist[i].z))
+            file.write("{0} {1} {2}\n".format(pointlist[i].x,pointlist[i].y,pointlist[i].z))
 
     file.close()
     print("Successfully saved")
 
+cloud = o3d.io.read_point_cloud(filename,format='xyz')
+o3d.visualization.draw_geometries([cloud])
 camera.stop_stream() 
 camera.close() 
            

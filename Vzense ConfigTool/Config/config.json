@@ -74,7 +74,7 @@
             1,
             30
         ],
-        "resolution_default": "640_480",
+        "resolution_default": "1600_1200",
         "resolution_list(read_only)": [
             "1600_1200",
             "800_600",
