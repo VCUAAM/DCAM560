@@ -5,13 +5,14 @@ import numpy as np
 camera = VzenseTofCam()
 
 device_info = camera.connect()
-camera.open(device_info.uri,"URI")
+camera.open(device_info.uri,Open.URI)
 camera.start_stream()   
 
+print(Open(1))
 frameready = camera.read_frame()
 
 if frameready and frameready.depth:      
-    frame = camera.get_frame("Depth")
+    frame = camera.get_frame(Frame.Depth)
     pointlist = camera.convert_to_world_vector(frame)
     folder = os.getcwd() + "/save"
     filename = folder + "/point.txt"

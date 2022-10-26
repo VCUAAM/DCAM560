@@ -1,19 +1,21 @@
 from API.Vzense_api_560 import *
 import cv2,numpy as np
 
-datamodes = ["depRGB","IR","IRRGB","WDR"]
-ranges = ["Near","XNear","XXNear","Mid","XMid","XXMid","Far","XFar","XXFar"]
+datamodes = ["Depth and RGB","IR and RGB","Depth, IR, and RGB","WDR"]
+ranges = ["Near","Mid","Far","XFar"]
 resos = ["640x480","1600x1200","800x600"]
 camera = VzenseTofCam()
 
 device_info = camera.connect()
-camera.open(device_info.uri,"URI")
+camera.open(device_info.uri,Open.URI)
 
 if True:
     camera.start_stream()
+    camera.set_depth_range(Range.Far)
+    camera.set_depth_distortion_correction(False)
     depthrange = camera.get_depth_range()
 
-    depth_max, value_min, value_max = camera.get_measuring_range()#str(ranges[depthrange.value]))
+    depth_max, value_min, value_max = camera.get_measuring_range()
     print("Measuring Range: ",depth_max,",",value_min,",",value_max)
         
 
@@ -29,34 +31,17 @@ if True:
             frameready = camera.read_frame()
     
             if frameready and frameready.depth:      
-                depthframe = camera.get_frame("Depth")
-                frametmp = np.ctypeslib.as_array(depthframe.pFrameData, (1, depthframe.width * depthframe.height * 2))
-                frametmp.dtype = np.uint16
-                frametmp.shape = (depthframe.height, depthframe.width)
-
-                #convert ushort value to 0xff is just for display
-                img = np.int32(frametmp)
-                img = img*255/value_max
-                img = np.clip(img, 0, 255)
-                img = np.uint8(img)
-                frametmp = cv2.applyColorMap(img, cv2.COLORMAP_RAINBOW)
-                cv2.imshow("Depth Image", frametmp)
+                depthframe = camera.get_frame(Frame.Depth)
+                depth = camera.gen_image(depthframe, Frame.Depth,value_max)
+                cv2.imshow("Depth Image", depth)
             if frameready and frameready.ir:
-                irframe = camera.get_frame("IR")
-                frametmp = np.ctypeslib.as_array(irframe.pFrameData, (1, irframe.width * irframe.height * 2))
-                frametmp.dtype = np.uint16
-                frametmp.shape = (irframe.height, irframe.width)
-                img = np.int32(frametmp)
-                img = img*255/3840
-                img = np.clip(img, 0, 255)
-                frametmp = np.uint8(img)
-                cv2.imshow("IR Image", frametmp)
+                irframe = camera.get_frame(Frame.IR)
+                ir = camera.gen_image(irframe, Frame.IR)
+                cv2.imshow("IR Image", ir)
             if frameready and frameready.rgb:      
-                rgbframe = camera.get_frame("RGB")
-                frametmp = np.ctypeslib.as_array(rgbframe.pFrameData, (1, rgbframe.width * rgbframe.height * 3))
-                frametmp.dtype = np.uint8
-                frametmp.shape = (rgbframe.height, rgbframe.width,3)
-                cv2.imshow("RGB Image", frametmp)
+                rgbframe = camera.get_frame(Frame.RGB)
+                rgb = camera.gen_image(rgbframe,Frame.RGB)
+                cv2.imshow("RGB Image", rgb)
 
             key = cv2.waitKey(10)
 
@@ -66,40 +51,43 @@ if True:
                 exit()
 
             elif key == ord('m') or key == ord('M'):
-                print("mode:")
+                print("Available Data Modes:")
                 for index, element in enumerate(datamodes):
                     print(index, element)
-                mode_input = int(input("choose:"))
+                mode_input = int(input("Type number of desired datamode:\n"))
                 if mode_input == 3:
                     WDRMode = PsWDROutputMode()
-                    WDRMode.totalRange = 2
+                    WDRMode.totalRange = 3
                     WDRMode.range1 = 0
                     WDRMode.range1Count = 1
                     WDRMode.range2 = 2
                     WDRMode.range2Count = 1
                     WDRMode.range3 = 5
                     WDRMode.range3Count = 1
-
+                    camera.set_WDR_style(WDR_Style.Fusion)
                     camera.set_WDR_output_mode(WDRMode)
-                    camera.set_data_mode(datamodes[mode_input])
+                    camera.set_data_mode(DataMode.WDR_Depth)
                 else:
-                    camera.set_data_mode(datamodes[mode_input])
+                    camera.set_data_mode(DataMode(mode_input))
     
             elif key == ord('r') or key == ord('R'):
-                print("resolution:")
+                print("Available Resolutions:")
                 for index, element in enumerate(resos):
                     print(index, element)
-                mode_input = int(input("choose:"))
-                camera.set_RGB_resolution(resos[mode_input])
+                mode_input = int(input("Type number of desired resolution:\n"))
+                camera.set_RGB_resolution(Reso(mode_input))
 
             elif key == ord('d') or key == ord('D'):
-                print("depth range:")
+                print("Available Depth Ranges:")
                 for index, element in enumerate(ranges):
-                    print(index, element)
-                mode_input = int(input("choose:"))
-                camera.set_depth_range(ranges[mode_input])
-                depth_max, value_min, value_max = camera.get_measuring_range(ranges[mode_input])
-                print(ranges[mode_input]," Measuring range: ",depth_max,",",value_min,",",value_max)
+                    print(index + 1, element)
+                mode_input = int(input("Type number of desired range:\n"))
+                if isinstance(mode_input,int) and mode_input < 5:
+                    if mode_input == 4:
+                        mode_input = 6
+                    mode_input -= 1
+                    camera.set_depth_range(mode_input)
+                depth_max, value_min, value_max = camera.get_measuring_range(Range(mode_input))
                        
         except Exception as e:
             print(e)

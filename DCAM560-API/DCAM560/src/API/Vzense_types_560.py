@@ -1,4 +1,5 @@
 from ctypes import *
+from doctest import DONT_ACCEPT_BLANKLINE
  
 class PsRGB888Pixel(Structure):
     _pack_ = 1
@@ -8,7 +9,7 @@ class PsRGB888Pixel(Structure):
 
 class PsBGR888Pixel(Structure):
     _pack_ = 1
-    _fields_ = [("g", c_uint8),
+    _fields_ = [("b", c_uint8),
                 ("g", c_uint8),
                 ("r", c_uint8)]
  
