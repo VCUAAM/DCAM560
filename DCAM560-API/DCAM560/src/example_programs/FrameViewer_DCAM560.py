@@ -41,6 +41,15 @@ if True:
             if frameready and frameready.rgb:      
                 rgbframe = camera.get_frame(Frame.RGB)
                 rgb = camera.gen_image(rgbframe,Frame.RGB)
+                img_gray = cv2.cvtColor(rgb,cv2.COLOR_BGR2GRAY)
+                ret,thresh = cv2.threshold(img_gray,160,255,cv2.THRESH_BINARY)
+                polcont = np.ones(thresh.shape[:2], dtype="uint8") * 255
+                contours,hierarchy = cv2.findContours(thresh,cv2.RETR_CCOMP,cv2.CHAIN_APPROX_SIMPLE)
+                max_cont = max(contours, key=cv2.contourArea)
+                eps = .01*cv2.arcLength(max_cont,True)
+                approx = cv2.approxPolyDP(max_cont,eps,True)
+                cv2.drawContours(polcont,[approx],-1,(0,0,0),2)
+                cv2.imshow("polcont", polcont)
                 cv2.imshow("RGB Image", rgb)
 
             key = cv2.waitKey(10)
