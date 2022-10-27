@@ -1,5 +1,5 @@
 from API.Vzense_api_560 import *
-import cv2, numpy as np
+import cv2
 
 camera = VzenseTofCam()
 
@@ -16,5 +16,6 @@ if frameready and frameready.rgb:
     rgb = camera.gen_image(frame,Frame.RGB)
     cv2.imwrite("save/rgb.png",rgb)
     print("Successfully saved")
+
 camera.stop_stream() 
 camera.close()
