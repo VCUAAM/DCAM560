@@ -1,0 +1,34 @@
+from API.Vzense_api_560 import *
+import cv2
+from math import *
+camera = VzenseTofCam()
+
+device_info = camera.connect()
+camera.open(device_info.uri,Open.URI)
+camera.start_stream()  
+camera.set_data_mode(DataMode.Depth_RGB)
+camera.set_mapper(Sensor.RGB,True)
+camera.set_RGB_distortion_correction(True)
+frameready = camera.read_frame()
+
+if frameready and frameready.rgb:      
+    frame = camera.get_frame(Frame.RGB)
+    rgb = camera.gen_image(frame,Frame.RGB)
+    cv2.imwrite("save/rgb.png",rgb)
+    print("Successfully saved")
+camera.stop_stream() 
+camera.close()
+
+img_gray = cv2.imread("save/rgb.png",0)
+ret,thresh = cv2.threshold(img_gray,160,255,cv2.THRESH_BINARY)
+polcont = np.ones(thresh.shape[:2], dtype="uint8") * 255
+contours,hierarchy = cv2.findContours(thresh,cv2.RETR_CCOMP,cv2.CHAIN_APPROX_SIMPLE)
+max_cont = max(contours, key=cv2.contourArea)
+eps = .01*cv2.arcLength(max_cont,True)
+approx = cv2.approxPolyDP(max_cont,eps,True)
+
+cv2.drawContours(polcont,[approx],-1,(0,0,0),2)
+cv2.imshow("polcont", polcont)
+cv2.waitKey(0)
+cv2.imwrite('save/polcont.png',polcont)
+cv2.destroyAllWindows()
