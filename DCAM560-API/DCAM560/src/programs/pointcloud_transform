@@ -1,10 +1,13 @@
 from API.Vzense_api_560 import *
 import open3d as o3d
 from math import *
+import os
+print(os.getcwd())
 camera = VzenseTofCam()
-filename = "/save/point.txt"
+filename = "save/point.txt"
+filename_tf = "save/point_tf.txt"
 rx,ry,rz = 2.383,2.257,-.630 #rad
-dx,dy,dz = -356,-108,846 #mm
+d = np.array([[-356],[-108],[846]]) #mm
 
 """
 camera.init()
@@ -36,13 +39,33 @@ if frameready and frameready.depth:
     print("Successfully saved")
 """
 
-r1 = np.array([[1,0,0],[0,cos(rx),sin(rx)],[0,-sin(rx),cos(rz)]])
-r2 = np.array([[cos(ry),0,-sin(ry)],[0,1,0],[sin(ry),0,cos(ry)]])
-r3 = np.array([])
-cloud = o3d.io.read_point_cloud(filename,format='xyz')
+r1 = np.array([[1,0,0],[0,cos(rx),-sin(rx)],[0,sin(rx),cos(rz)]])
+r2 = np.array([[cos(ry),0,sin(ry)],[0,1,0],[-sin(ry),0,cos(ry)]])
+r3 = np.array([[cos(rz),-sin(rz),0],[sin(rz),cos(rz),0],[0,0,1]])
+
+r31 = r3*r2*r1
+
+with open(filename,"r") as fr:
+    get_all = fr.readlines()
+    fr.close()
+ran = False
+with open(filename_tf,"w") as fw:
+    for line in get_all:
+        st = line.strip("\n").split(" ")
+        f = [float(i) for i in st]
+        tf = (r1*r2*r3).transpose()*np.reshape(np.array(f),(-1,1))
+        nz = np.array([[tf[0][0]],[tf[1][1]],[tf[2][2]]]) #+ d
+        nzf = nz.flatten()
+        if ran == False:
+            ran = True
+            print(nzf)
+        fw.write("{0} {1} {2}\n".format(nzf[0],nzf[1],nzf[2]))
+    
+
+cloud = o3d.io.read_point_cloud(filename_tf,format='xyz')
 mesh_frame = o3d.geometry.TriangleMesh.create_coordinate_frame(
     size=100, origin=[0,0,0])
 o3d.visualization.draw_geometries([cloud,mesh_frame])
-camera.stop_stream() 
-camera.close() 
-           
+
+#camera.stop_stream() 
+#camera.close() 
