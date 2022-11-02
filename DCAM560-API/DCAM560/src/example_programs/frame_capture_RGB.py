@@ -3,12 +3,9 @@ import cv2
 
 camera = VzenseTofCam()
 
-device_info = camera.connect()
-camera.open(device_info.uri,Open.URI)
-camera.start_stream()  
+camera.init()
 camera.set_data_mode(DataMode.Depth_RGB)
-camera.set_mapper(Sensor.RGB,True)
-camera.set_RGB_distortion_correction(True)
+camera.set_RGB_distortion_correction(False)
 frameready = camera.read_frame()
 
 if frameready and frameready.rgb:      

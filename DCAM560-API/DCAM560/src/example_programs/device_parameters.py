@@ -2,11 +2,9 @@ from API.Vzense_api_560 import *
 
 camera = VzenseTofCam()
 
-device_info = camera.connect()
-camera.open(device_info.uri)
-camera.start_stream()
+camera.init()
 
-params = camera.get_camera_parameters("depth")
+params = camera.get_camera_parameters(Sensor.Depth)
 print("Depth Camera Parameters:",
 params.fx,
 params.fy,
@@ -21,7 +19,7 @@ params.k4,
 params.k5,
 params.k6)
     
-params = camera.get_camera_parameters("RGB")
+params = camera.get_camera_parameters(Sensor.RGB)
 print("RGB Camera Parameters:",
 params.fx,
 params.fy,

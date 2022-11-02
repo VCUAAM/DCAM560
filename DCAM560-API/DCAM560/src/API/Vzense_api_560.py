@@ -45,19 +45,19 @@ class VzenseTofCam():
     def connect(self):
         camera_count,retry_count,device_info = c_int(),0,PsDeviceInfo()
 
-        while camera_count == 0 and retry_count < 20:
+        while (camera_count.value == 0 and retry_count < 20) or retry_count < 1:
             retry_count += 1
-            camera_count = (self.ps_cam_lib.Ps2_GetDeviceCount(byref(camera_count))).value
+            self.ps_cam_lib.Ps2_GetDeviceCount(byref(camera_count))
             time.sleep(1)
             print("Searching for camera, attempt",retry_count)
 
-        if camera_count > 1:
-            tmp  = PsDeviceInfo* camera_count
+        if camera_count.value > 1:
+            tmp  = PsDeviceInfo* camera_count.value
             device_infolist = tmp() 
-            status = self.ps_cam_lib.Ps2_GetDeviceListInfo(device_infolist, camera_count)
+            status = self.ps_cam_lib.Ps2_GetDeviceListInfo(device_infolist, camera_count.value)
             print("Multiple cameras found on network, connecting to first one")
             device_info = device_infolist[0] 
-        elif camera_count == 1:
+        elif camera_count.value == 1:
             status = self.ps_cam_lib.Ps2_GetDeviceInfo(byref(device_info), 0)
         else: 
             print("No camera found on network")
@@ -70,17 +70,17 @@ class VzenseTofCam():
             print("Camera connected")
             #print("Camera URI: " + (re.search("'(.*):",str(device_info.uri))).group(1))
             #print("Alias: " + (re.search("'(.*)'",str(device_info.alias))).group(1))
-            #print("Connection status: " + str(device_info.status))   
+            #print("Connection status: " + str(Status(device_info.status)))   
         return device_info
          
     def open(self, key = c_char_p(), method = Open.URI):
         match method:
             case Open.URI:
-                status = self.ps_cam_lib.Ps2_OpenDevice(key, byref(self.device_handle))
+                status = self.ps_cam_lib.Ps2_OpenDevice(key.uri, byref(self.device_handle))
             case Open.alias:
-                status = self.ps_cam_lib.Ps2_OpenDeviceByAlias(key, byref(self.device_handle))
+                status = self.ps_cam_lib.Ps2_OpenDeviceByAlias(key.alias, byref(self.device_handle))
             case Open.IP:
-                status = self.ps_cam_lib.Ps2_OpenDeviceByIP(key, byref(self.device_handle))
+                status = self.ps_cam_lib.Ps2_OpenDeviceByIP(key.ip, byref(self.device_handle))
             case other:
                 print("Invalid opening method")
                 return Error.Input_Pointer_Null
@@ -134,22 +134,23 @@ class VzenseTofCam():
 
         return psframe
     
-    def gen_image(self, frame, frametype = Frame.Depth, max_range = 1):
+    def gen_image(self, frame, frametype = Frame.Depth):
         fw,fh = frame.width,frame.height
         match frametype:
             case Frame.Depth:
+                depth_max,value_min,max_range = self.get_measuring_range(False)
                 frametmp = np.ctypeslib.as_array(frame.pFrameData, (1, 2*fw*fh))
                 frametmp.dtype = np.uint16
                 frametmp.shape = (fh, fw)
                 img = np.int32(frametmp)*255/max_range
                 img = np.uint8(np.clip(img, 0, 255))
                 frametmp = cv2.applyColorMap(img, cv2.COLORMAP_RAINBOW)
-                #hsv = cv2.cvtColor(frametmp,cv2.COLOR_BGR2HSV)
                 bgr = frametmp.copy()
                 r,p = np.array([0,0,255]),np.array([255,0,170])
                 mask_r,mask_p = cv2.inRange(bgr,r,r),cv2.inRange(bgr,p,p)
                 #frametmp[mask_r > 0] = (255,255,255)
                 frametmp[mask_p > 0] = (0,0,0)
+                frametmp[mask_r > 0] = (0,0,0)
                 return frametmp
             case Frame.RGB:
                 fw,fh = frame.width,frame.height
@@ -194,18 +195,19 @@ class VzenseTofCam():
         else:
             print("Failed to set depth range:", str(Error(status)))
        
-    def get_depth_range(self):
+    def get_depth_range(self,ret = True):
         depthrange = c_int(0)
         status = self.ps_cam_lib.Ps2_GetDepthRange(self.device_handle, self.session, byref(depthrange))
         if status == 0:
-            print("Depth Range:",Range(depthrange.value))
+            if ret:
+                print("Depth Range:",Range(depthrange.value))
             return Range(depthrange.value)
         else:
             print("Failed to get depth range:",str(Error(status)))
 
     def set_threshold(self, threshold = 20):
         status = self.ps_cam_lib.Ps2_SetThreshold(self.device_handle, self.session, c_uint16(threshold))
-        if status != 0: 
+        if status == 0: 
             thresh = self.get_threshold()
             return thresh
         else:
@@ -287,7 +289,7 @@ class VzenseTofCam():
        
     def set_RGB_resolution(self, resolution = Reso._640x480):
         status = self.ps_cam_lib.Ps2_SetRGBResolution(self.device_handle, self.session, resolution.value) 
-        if status == 0:  
+        if status == 0:
             reso = self.get_RGB_resolution()
             return reso
         else:
@@ -295,10 +297,10 @@ class VzenseTofCam():
      
     def get_RGB_resolution(self):
         resolution = c_int(0)
-        status = self.ps_cam_lib.Ps2_GetRGBResolution(self.device_handle, self.session, byref(resolution)), resolution
+        status = self.ps_cam_lib.Ps2_GetRGBResolution(self.device_handle, self.session, byref(resolution))
         if status == 0: 
-            print("RGB resolution: %s" %(str(resolution.value)))
-            return resolution.value
+            print("RGB resolution: %s" %(str(Reso(resolution.value))))
+            return Reso(resolution.value)
         else:
             print("Failed to get RGB resolution:",str(Error(status)))
             return None
@@ -326,22 +328,30 @@ class VzenseTofCam():
         if status != 0:
             print("Failed to set WDR style:",str(Error(status))) 
                 
-    def get_measuring_range(self, range = Range.Near):
+    def get_measuring_range(self,ret = True):
+        range = self.get_depth_range(False)
         MeasuringRange = PsMeasuringRange()
         status = self.ps_cam_lib.Ps2_GetMeasuringRange(self.device_handle, self.session, range.value, byref(MeasuringRange))
         if status == 0:
             if range == Range.Near or range == Range.XNear or range == Range.XXNear:
-                return MeasuringRange.depthMaxNear, MeasuringRange.effectDepthMinNear, MeasuringRange.effectDepthMaxNear
+                depth_max,value_min,value_max = MeasuringRange.depthMaxNear, MeasuringRange.effectDepthMinNear, MeasuringRange.effectDepthMaxNear
+                
             elif range == Range.Mid or range == Range.XMid or range == Range.XXMid:
-                return MeasuringRange.depthMaxMid, MeasuringRange.effectDepthMinMid, MeasuringRange.effectDepthMaxMid
+                depth_max,value_min,value_max = MeasuringRange.depthMaxMid, MeasuringRange.effectDepthMinMid, MeasuringRange.effectDepthMaxMid
+
             elif range == Range.Far or range == Range.XFar or range == Range.XXFar:
-                return MeasuringRange.depthMaxFar, MeasuringRange.effectDepthMinFar, MeasuringRange.effectDepthMaxFar
+                depth_max,value_min,value_max = MeasuringRange.depthMaxFar, MeasuringRange.effectDepthMinFar, MeasuringRange.effectDepthMaxFar
+    
+            if ret:
+                print("Measuring Range: ",depth_max,",",value_min,",",value_max)
+            return depth_max,value_min,value_max
         else:
             print("Failed to get measuring range:",str(Error(status)))
             return 0, 0, 0
 
     def convert_to_world_vector(self, depthFrame = PsFrame()): 
-        tmp = PsVector3f*depthFrame.width*depthFrame.height
+        len = depthFrame.width*depthFrame.height
+        tmp = PsVector3f*len
         pointlist = tmp()
         status = self.ps_cam_lib.Ps2_ConvertDepthFrameToWorldVector(self.device_handle, self.session, depthFrame,pointlist)
         if status == 0:
