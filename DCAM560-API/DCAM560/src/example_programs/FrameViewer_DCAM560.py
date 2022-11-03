@@ -12,10 +12,10 @@ camera = VzenseTofCam()
 #Initializing camera and configuring image settings
 device_info = camera.init()
 camera.set_depth_range()
-camera.set_mapper(Sensor.RGB,True)
-camera.set_RGB_distortion_correction(True)
+#camera.set_mapper(Sensor.RGB,True)
+#camera.set_RGB_distortion_correction(True)
 camera.set_depth_distortion_correction(True)
-camera.set_compute_depth_corection(True)
+camera.set_compute_depth_correction(True)
 depth_max, value_min, value_max = camera.get_measuring_range()
 
 #Defining logic variables for control of image and inputs
@@ -39,7 +39,7 @@ while True:
         if frameready and frameready.depth:
             dw = True      
             depthframe = camera.get_frame(Frame.Depth)
-            depth = camera.gen_image(depthframe, Frame.Depth,value_max)
+            depth = camera.gen_image(depthframe, Frame.Depth)
 
             #Window configuration for images
             cv2.namedWindow('Depth Image', cv2.WINDOW_KEEPRATIO)
@@ -76,7 +76,7 @@ while True:
         #Generating RGB and polygon image if the RGB datamode is selected 
         if frameready and frameready.rgb:
             rw = True      
-            rgbframe = camera.get_frame(Frame.MappedRGB)
+            rgbframe = camera.get_frame(Frame.RGB)
             rgb = camera.gen_image(rgbframe,Frame.RGB)
 
             #Image processing to get a simple polygon of largest contour in view
@@ -90,9 +90,9 @@ while True:
             cv2.drawContours(polcont,[approx],-1,(0,0,0),2)
 
             #Window configuration for images
-            #cv2.namedWindow('Polycon View', cv2.WINDOW_KEEPRATIO)
+            cv2.namedWindow('Polycon View', cv2.WINDOW_KEEPRATIO)
             cv2.namedWindow('RGB Image', cv2.WINDOW_NORMAL)
-            #cv2.imshow("Polycon View", polcont)
+            cv2.imshow("Polycon View", polcont)
             cv2.imshow("RGB Image", rgb)
 
             rgbe = 0

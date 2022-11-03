@@ -402,7 +402,7 @@ class VzenseTofCam():
         else:
             print("Failed to get RGB distortion correction status",str(Error(status)))
 
-    def set_compute_depth_corection(self, enabled = True): 
+    def set_compute_depth_correction(self, enabled = True): 
         status = self.ps_cam_lib.Ps2_SetComputeRealDepthCorrectionEnabled(self.device_handle, self.session, c_bool(enabled))
         if status == 0:
             self.get_compute_depth_correction()

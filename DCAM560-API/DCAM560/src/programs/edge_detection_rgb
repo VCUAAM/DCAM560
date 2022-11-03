@@ -10,11 +10,13 @@ camera.set_depth_range(Range.Mid)
 camera.set_RGB_distortion_correction(True)
 camera.set_depth_distortion_correction(True)
 camera.set_threshold(80)
-frameready = camera.read_frame()
 
-if frameready and frameready.mappedRGB:      
-    frame = camera.get_frame(Frame.MappedRGB)
-    mappedrgb = camera.gen_image(frame,Frame.RGB)
+while True:
+    frameready = camera.read_frame()
+    if frameready and frameready.mappedRGB:      
+        frame = camera.get_frame(Frame.MappedRGB)
+        mappedrgb = camera.gen_image(frame,Frame.RGB)
+        break
 
 img_gray = cv2.cvtColor(mappedrgb,cv2.COLOR_BGR2GRAY)
 ret,thresh = cv2.threshold(img_gray,160,255,cv2.THRESH_BINARY)
@@ -50,5 +52,6 @@ if frameready and frameready.mappedRGB:
     masked_rgb = cv2.bitwise_and(mappedrgb,polcont_m)
     cv2.imwrite("save/mappedrgb.png",masked_rgb)
     print("Successfully saved")
+
 camera.stop_stream() 
 camera.close()
