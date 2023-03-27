@@ -1,7 +1,14 @@
-import platform,time,os,re,cv2
+import os
+import platform
+import re
+import time
+
+import cv2
 import numpy as np
-from API.Vzense_enums_560 import *
-from API.Vzense_types_560 import * 
+
+from src.API.Vzense_enums_560 import *
+from src.API.Vzense_types_560 import *
+
 
 class VzenseTofCam():
     device_handle = c_void_p(0)
@@ -728,7 +735,7 @@ class VzenseTofCam():
     def SDK_version(self): 
         tmp = c_char * 64
         version = tmp()
-        status = self.ps_cam_lib.Ps2_GetSDKVersion(version, 63),version.value
+        status = self.ps_cam_lib.Ps2_GetSDKVersion(version, 63)
         if status == 0:
             print("Device SDK version:",str(version.value))
         else:
@@ -747,7 +754,7 @@ class VzenseTofCam():
     def MAC_address(self):
         tmp = c_char * 18
         mac = tmp()
-        status = self.ps_cam_lib.Ps2_GetDeviceMAC(self.device_handle, self.session, mac), mac.value
+        status = self.ps_cam_lib.Ps2_GetDeviceMAC(self.device_handle, self.session, mac)
         if status == 0:
             print("Device MAC address:",str(mac.value))
         else:

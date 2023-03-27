@@ -1,10 +1,16 @@
-from API.Vzense_api_560 import *
+import sys
+
+sys.path.append("C:/Users/schorrl/Documents/GitHub/DCAM560/DCAM560-API/DCAM560")
+
 import open3d as o3d
+
+from src.API.Vzense_api_560 import *
 
 camera = VzenseTofCam()
 
 camera.init()
 camera.set_data_mode(DataMode.Depth_RGB)
+camera.set_depth_range(Range.Mid)
 frameready = camera.read_frame()
 
 if frameready and frameready.depth:      
@@ -27,8 +33,7 @@ if frameready and frameready.depth:
     print("Successfully saved")
 
 cloud = o3d.io.read_point_cloud(filename,format='xyz')
-mesh_frame = o3d.geometry.TriangleMesh.create_coordinate_frame(
-    size=100, origin=[0,0,0])
+mesh_frame = o3d.geometry.TriangleMesh.create_coordinate_frame(size=100, origin=[0,0,0])
 o3d.visualization.draw_geometries([cloud,mesh_frame])
 camera.stop_stream() 
 camera.close() 

@@ -1,5 +1,10 @@
-from API.Vzense_api_560 import *
-import cv2,numpy as np
+import sys
+
+import cv2
+import numpy as np
+
+sys.path.append("C:/Users/schorrl/Documents/GitHub/DCAM560/DCAM560-API/DCAM560")
+from src.API.Vzense_api_560 import *
 
 #Defining arrays for user display of controls
 datamodes = ["Depth and RGB","IR and RGB","Depth, IR, and RGB","WDR"]
@@ -80,6 +85,7 @@ while True:
             rgb = camera.gen_image(rgbframe,Frame.RGB)
 
             #Image processing to get a simple polygon of largest contour in view
+            '''
             img_gray = cv2.cvtColor(rgb,cv2.COLOR_BGR2GRAY)
             ret,thresh = cv2.threshold(img_gray,160,255,cv2.THRESH_BINARY)
             polcont = np.ones(thresh.shape[:2], dtype="uint8") * 255
@@ -88,21 +94,21 @@ while True:
             eps = .01*cv2.arcLength(max_cont,True)
             approx = cv2.approxPolyDP(max_cont,eps,True)
             cv2.drawContours(polcont,[approx],-1,(0,0,0),2)
-
+            '''
             #Window configuration for images
-            cv2.namedWindow('Polycon View', cv2.WINDOW_KEEPRATIO)
+            #cv2.namedWindow('Polycon View', cv2.WINDOW_KEEPRATIO)
             cv2.namedWindow('RGB Image', cv2.WINDOW_NORMAL)
-            cv2.imshow("Polycon View", polcont)
+            #cv2.imshow("Polycon View", polcont)
             cv2.imshow("RGB Image", rgb)
 
             rgbe = 0
 
         #If there is no IR frame 10 times, destroy the window
         elif rw == True:
-            rgbe += 1
+            #rgbe += 1
             if rgbe > 10:
                 rw = False
-                cv2.destroyWindow("Polycon View")
+                #cv2.destroyWindow("Polycon View")
                 cv2.destroyWindow("RGB Image")
 
         #Initializing wait key to record user input when opencv window is in frame
