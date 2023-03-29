@@ -1,50 +1,50 @@
-## Python Wrapper for Vzense Base SDK API
+# DCAM560CPro Usage of API
 
-Python wrapper is an opensource project of Vzense TOF camera API. This API has been heavily modified to better fit the needs of the VCU research team
-
-The goal of this project is to help developers use Vzense TOF camera via python method easily.
-
-### Requirements
-
-- Python version : 3.10.x
-- Python modules : ctypes, numpy, opencv-python
-
-### Directory
-
-- **DCAM560**: API and Sample code for DCAM560CPRO
-- **Lib**: VzenseBaseSDK dynamic library files
-- **install.py**: Installation file
-- **config.txt**: Set config that is needed by 'install.py', such as:
+## Initial Imports and Class Initialization
 ```
-system = Windows64
-url = https://github.com
+from API.Vzense_api_560 import *
+
+camera = VzenseTofCam()
 ```
-|system|details|
-|---|---|
-|Windows64|windows 64 bit|
-|Windows32|windows 32 bit|
-|Ubuntu20.04|the same with Ubuntu18.04 PC SDK|
-|Ubuntu18.04|for PC with x86_64-linux-gnu(v7.5.0)|
-|Ubuntu16.04|for PC with x86_64-linux-gnu(v5.4.0)|
-|AArch64|for aarch64 with aarch64-linux-gnu(v5.4.0)|
-|Arm-linux-gnueabihf|for arm32 with arm-linux-gnueabihf(v5.4.0)|
 
-|url|
-|---|
-|https://gitee.com|
-|https://github.com|
+To access the API from external scripts, the API module must be imported. Additionally, the camera class must be initialized. Camera is an arbitrary name, but it will be used for the remainder of this document.
 
-### Quick Start for API
+All methods detailed below are defined in `src/API/Vsense_api_560.py` for further detail. The described methods will show basic implementation and description in usage of scripts.
 
-- Step 1: Install modules
-         
-```	 
-	  pip install numpy
-	  pip install opencv-python 
+## Camera Connection and Frame Reading Methods
+
+`device_info = camera.connect()` Connects to camera, device_info contains information concerning the camera. `device_info` is an arbitrary name, but it will be used for the remainder of this document.
+
+`camera.open(device_info.method,"method")` Opens the camera, using one of three methods: "URI","alias", or "IP". Arguments are case sensitive.
 ```
-- Step 2. Set 'config.txt' according to your needs
+camera.open(device_info.uri,"URI")
+camera.open(device_info.alias,"alias")
+camera.open(device_info.ip,"IP")
+```
+`camera.close()` Closes the currently opened camera
 
-- Step 3. Execute 'python install.py' to install system libraries and drivers
+`camera.start_stream()` Begins a data stream with an opened camera
 
-- Step 4. Switch to src under the product directory, and utilize with the help of the example programs
+`camera.stop_stream()` Ends a data stream with an opened camera
 
+`frameready = camera.read_frame()` Reads a frame from the camera. This includes RGB, depth, and IR.
+>`frameready.rgb`,`frameready.depth`, and `frameready.ir` return `True` if the read frame includes the matching image type, and `False` otherwise
+
+`frame = camera.get_frame("Method")` Gets the data from the read frame. Methods include "RGB", "Depth", and "IR". Default method is "Depth". 
+
+## Image Properties Retreival Methods
+
+`gmm = camera.get_GMM_gain()` Retreives the GMM (Gaussian Mixture Model) gain of the camera
+
+`pulse = camera.get_pulse_count()` Retreives the pulse count of the ToF camera 
+## Camera Properties Methods
+
+`camera.serial_number()` Prints the serial number of the camera
+
+`camera.IP()` Prints the IP of the camera
+
+`camera.SDK_version()` Prints the SDK version of the camera
+
+`camera.MAC_address()` Prints the MAC address of the camera
+
+`camera.firmware_version()` Prints the firmare version used by the camera

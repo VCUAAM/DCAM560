@@ -1,2 +1,0 @@
-system = Windows64
-url = https://github.com

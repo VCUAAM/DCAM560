@@ -2,14 +2,20 @@
 
 ## Initial Imports and Class Initialization
 ```
-from API.Vzense_api_560 import *
+from dcam560.Vzense_api_560 import *
 
 camera = VzenseTofCam()
 ```
 
-To access the API from external scripts, the API module must be imported. Additionally, the camera class must be initialized. Camera is an arbitrary name, but it will be used for the remainder of this document.
+To access the API from external scripts, the API module must be installed. Additionally, the camera class must be initialized. Camera is an arbitrary name, but it will be used for the remainder of this document.
 
-All methods detailed below are defined in `src/API/Vsense_api_560.py` for further detail. The described methods will show basic implementation and description in usage of scripts.
+All methods are defined in `dcam560/Vsense_api_560.py` for further detail. The described methods will show basic implementation and description in usage of scripts.
+
+## API Installation
+Move the folder `dcam560` to Python site-packages folder. Navigate to the `/site-packages/dcam560` directory. Execute the following command. The module is now installed and ready to be imported
+```
+pip install .
+```
 
 ## Camera Connection and Frame Reading Methods
 

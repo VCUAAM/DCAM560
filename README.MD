@@ -25,7 +25,7 @@ Each are detailed below, and contain their own README for further usage.
    - These functions are detailed in the API folder
  - The modifications made by [Logan Schorr](https://github.com/pokelogan89) primarily are in regards to making the API easier to write in and internalizing the error messages to the built-in functions
    - This also includes creating a thorough documentation of the usage and parameters for the API for future reference and development
-
+ - There are several example programs that demonstrate usage of the API
 ## Vsense Config Tool
 - The configuration tool is a way to configure the settings of the 3D camera
   - This can be used to set the IP of the camera, as well as change the WDR, Depth, and RGB settings of the camera
