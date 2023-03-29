@@ -1,5 +1,10 @@
-from API.Vzense_api_560 import *
-import cv2,numpy as np
+import sys
+
+import cv2
+import numpy as np
+
+sys.path.append("C:/Users/schorrl/Documents/GitHub/DCAM560/DCAM560-API/DCAM560")
+from src.API.Vzense_api_560 import *
 
 #Defining arrays for user display of controls
 datamodes = ["Depth and RGB","IR and RGB","Depth, IR, and RGB","WDR"]
@@ -12,10 +17,10 @@ camera = VzenseTofCam()
 #Initializing camera and configuring image settings
 device_info = camera.init()
 camera.set_depth_range()
-camera.set_mapper(Sensor.RGB,True)
-camera.set_RGB_distortion_correction(True)
+#camera.set_mapper(Sensor.RGB,True)
+#camera.set_RGB_distortion_correction(True)
 camera.set_depth_distortion_correction(True)
-camera.set_compute_depth_corection(True)
+camera.set_compute_depth_correction(True)
 depth_max, value_min, value_max = camera.get_measuring_range()
 
 #Defining logic variables for control of image and inputs
@@ -39,7 +44,7 @@ while True:
         if frameready and frameready.depth:
             dw = True      
             depthframe = camera.get_frame(Frame.Depth)
-            depth = camera.gen_image(depthframe, Frame.Depth,value_max)
+            depth = camera.gen_image(depthframe, Frame.Depth)
 
             #Window configuration for images
             cv2.namedWindow('Depth Image', cv2.WINDOW_KEEPRATIO)
@@ -76,10 +81,11 @@ while True:
         #Generating RGB and polygon image if the RGB datamode is selected 
         if frameready and frameready.rgb:
             rw = True      
-            rgbframe = camera.get_frame(Frame.MappedRGB)
+            rgbframe = camera.get_frame(Frame.RGB)
             rgb = camera.gen_image(rgbframe,Frame.RGB)
 
             #Image processing to get a simple polygon of largest contour in view
+            '''
             img_gray = cv2.cvtColor(rgb,cv2.COLOR_BGR2GRAY)
             ret,thresh = cv2.threshold(img_gray,160,255,cv2.THRESH_BINARY)
             polcont = np.ones(thresh.shape[:2], dtype="uint8") * 255
@@ -88,7 +94,7 @@ while True:
             eps = .01*cv2.arcLength(max_cont,True)
             approx = cv2.approxPolyDP(max_cont,eps,True)
             cv2.drawContours(polcont,[approx],-1,(0,0,0),2)
-
+            '''
             #Window configuration for images
             #cv2.namedWindow('Polycon View', cv2.WINDOW_KEEPRATIO)
             cv2.namedWindow('RGB Image', cv2.WINDOW_NORMAL)
@@ -99,10 +105,10 @@ while True:
 
         #If there is no IR frame 10 times, destroy the window
         elif rw == True:
-            rgbe += 1
+            #rgbe += 1
             if rgbe > 10:
                 rw = False
-                cv2.destroyWindow("Polycon View")
+                #cv2.destroyWindow("Polycon View")
                 cv2.destroyWindow("RGB Image")
 
         #Initializing wait key to record user input when opencv window is in frame
