@@ -135,7 +135,7 @@ hull, _ = inlier_cloud.compute_convex_hull(joggle_inputs=True)
 hull_ls = o3d.geometry.LineSet.create_from_triangle_mesh(hull)
 hull_ls.paint_uniform_color((0,1, 0))
 
-obb = inlier_cloud.get_oriented_bounding_box(robust=True)
+obb = inlier_cloud.get_minimal_oriented_bounding_box(robust=True)
 obb.color = (0, 0, 1)
 points = obb.get_box_points()
 o3d.visualization.draw_geometries([inlier_cloud,origin,obb])

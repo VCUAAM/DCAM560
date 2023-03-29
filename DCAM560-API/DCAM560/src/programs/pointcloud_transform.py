@@ -15,7 +15,7 @@ filename_filtered = "save/point_filtered.xyz"
 rx,ry,rz = -2.6423,0.0944,1.60133 #rad
 d = np.array([[-232.9371],[158.59636],[851.17828]]) #mm
 
-new = True
+new = False
 if new:
     camera.init()
     camera.set_data_mode(DataMode.Depth_RGB)
@@ -112,14 +112,14 @@ origin = o3d.geometry.TriangleMesh.create_coordinate_frame(size=100, origin=[0,0
 
 
 #print(np.asarray(points[0][0]))
-plane_model, inliers = cloud.segment_plane(distance_threshold=0.15,
+plane_model, inliers = cloud.segment_plane(distance_threshold=0.2,
                                          ransac_n=3,
                                          num_iterations=10000)
 
 inlier_cloud = cloud.select_by_index(inliers)
 inlier_cloud.paint_uniform_color([1.0, 0, 0])
 outlier_cloud = cloud.select_by_index(inliers, invert=True)
-obb = inlier_cloud.get_oriented_bounding_box(robust=True)
+obb = inlier_cloud.get_minimal_oriented_bounding_box(robust=True)
 obb.color = (0, 0, 1)
 points = obb.get_box_points()
 o3d.visualization.draw_geometries([inlier_cloud, outlier_cloud,origin,obb])

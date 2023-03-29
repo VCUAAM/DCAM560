@@ -92,6 +92,6 @@ obb = filtereds.get_oriented_bounding_box()
 obb.color = (0, 0, 1)
 o3d.visualization.draw_geometries([filtereds,mesh_frame,obb])
 
-\
+
 camera.stop_stream() 
 camera.close()
