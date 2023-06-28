@@ -11,10 +11,11 @@ camera = VzenseTofCam()
 
 #Initializing camera and configuring image settings
 device_info = camera.init()
-camera.set_depth_range()
+camera.set_depth_range(Range.Mid)
+camera.set_threshold(0)
 #camera.set_mapper(Sensor.RGB,True)
 #camera.set_RGB_distortion_correction(True)
-camera.set_depth_distortion_correction(True)
+#camera.set_depth_distortion_correction(True)
 camera.set_compute_depth_correction(True)
 depth_max, value_min, value_max = camera.get_measuring_range()
 
@@ -130,11 +131,11 @@ while True:
             #WDR Mode needs to have object initialized to denote selected depth ranges, and style and output mode need to be set
             if key == 52:
                 WDRMode = PsWDROutputMode()
-                WDRMode.totalRange = 3
+                WDRMode.totalRange = 2
                 WDRMode.range1 = 0
                 WDRMode.range1Count = 1
                 WDRMode.range2 = 2
-                WDRMode.range2Count = 1
+                WDRMode.range2Count = 2
                 WDRMode.range3 = 5
                 WDRMode.range3Count = 1
                 camera.set_WDR_style(WDR_Style.Fusion)

@@ -316,7 +316,7 @@ class VzenseTofCam():
      
     def get_WDR_output_mode(self):
         WDRMode = PsWDROutputMode()
-        status = self.ps_cam_lib.Ps2_GetWDROutputMode(self.device_handle, self.session, byref(WDRMode)), WDRMode
+        status = self.ps_cam_lib.Ps2_GetWDROutputMode(self.device_handle, self.session, byref(WDRMode))
         if status == 0: 
             print("WDR Output Mode:",str(WDRMode))
             return WDRMode
